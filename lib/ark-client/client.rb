@@ -1,6 +1,6 @@
 require 'ark-client/connection'
 require 'ark-client/configurable'
-require 'ark-client/transaction_builder'
+# require 'ark-client/transaction_builder'
 
 require 'ark-client/client/account'
 require 'ark-client/client/block'
