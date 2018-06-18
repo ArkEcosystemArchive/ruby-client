@@ -24,16 +24,12 @@ module ArkClient
         "#{@host}/"
       end
 
-      def last_response
-        @last_response if defined? @last_response
-      end
-
       private
 
       def request(method, path, data)
         request = http.send(method, path, data)
 
-        @last_response = response = JSON.parse request.body
+        response = JSON.parse request.body
 
         if response['success'] == false
           raise response['error']
@@ -49,9 +45,7 @@ module ArkClient
       def http
         connection = Faraday.new root do |conn|
           conn.headers['Content-Type'] = 'application/json'
-          conn.headers[:nethash] = @nethash
-          conn.headers[:version] = @version
-          conn.headers[:port] = "1"
+          conn.headers['API-Version'] = "#{@version}"
 
           conn.request :json
 
