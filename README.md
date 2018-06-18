@@ -33,9 +33,19 @@ Or install it yourself as:
 ```ruby
 require 'ark_client'
 
-connection = ArkClient::Connection.new({ host: "https://my.host.io:8443/api", version: 1 })
+client = ArkClient.client
 
-print connection.get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')
+connection = ArkClient::Connection.new({ host: "https://main.host.io:4003/api/", version: 1 }, 'main')
+connectionMain = client.connect(connection)
+
+connection = ArkClient::Connection.new({ host: "https://back.host.io:4003/api/", version: 1 }, 'backup')
+connectionBack = client.connect(connection)
+
+begin
+    print connectionMain.get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
+rescue
+    print connectionBack.get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
+end
 ```
 
 ## Development
