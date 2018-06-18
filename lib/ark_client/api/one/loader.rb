@@ -1,17 +1,19 @@
 module ArkClient
-  module API
-    module One
-      module Loader
-        def status
-          get('api/loader/status')
-        end
+  class Client
+    module API
+      module One
+        module Loader
+          def status
+            get('api/loader/status')
+          end
 
-        def sync
-          get('api/loader/status/sync')
-        end
+          def sync
+            get('api/loader/status/sync')
+          end
 
-        def autoconfigure
-          get('api/loader/autoconfigure')
+          def autoconfigure
+            get('api/loader/autoconfigure')
+          end
         end
       end
     end

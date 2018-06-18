@@ -1,37 +1,39 @@
 module ArkClient
-  module API
-    module Two
-      module Wallets
-        def list(parameters = {})
-          get("wallets", parameters)
-        end
+  class Client
+    module API
+      module Two
+        module Wallets
+          def list(parameters = {})
+            get("wallets", parameters)
+          end
 
-        def top(parameters = {})
-          get("wallets/top", parameters)
-        end
+          def top(parameters = {})
+            get("wallets/top", parameters)
+          end
 
-        def get(id)
-          get("wallets/#{id}")
-        end
+          def get(id)
+            get("wallets/#{id}")
+          end
 
-        def transactions(id, parameters = {})
-          get("wallets/#{id}/transactions", parameters)
-        end
+          def transactions(id, parameters = {})
+            get("wallets/#{id}/transactions", parameters)
+          end
 
-        def sent_transactions(id, parameters = {})
-          get("wallets/#{id}/transactions/sent", parameters)
-        end
+          def sent_transactions(id, parameters = {})
+            get("wallets/#{id}/transactions/sent", parameters)
+          end
 
-        def received_transaction(id, parameters = {})
-          get("wallets/#{id}/transactions/received", parameters)
-        end
+          def received_transaction(id, parameters = {})
+            get("wallets/#{id}/transactions/received", parameters)
+          end
 
-        def votes(id)
-          get("wallets/#{id}/votes")
-        end
+          def votes(id)
+            get("wallets/#{id}/votes")
+          end
 
-        def search(parameters)
-          post("wallets/search", parameters)
+          def search(parameters)
+            post("wallets/search", parameters)
+          end
         end
       end
     end

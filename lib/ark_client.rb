@@ -1,38 +1,12 @@
 require 'ark_client/client'
-require 'ark_client/config'
 require 'ark_client/connection'
 
 module ArkClient
   class << self
-    include ArkClient::Connection
+    def client
+      return @client if defined?(@client)
 
-    # def initialize
-    #   @default = 'main'
-    #   @connections = {}
-    # end
-
-    # def connect(connection, name = 'main')
-    #   @connections[name] = connection
-    # end
-
-    # def disconnect(name)
-    #   @connections.delete(name)
-    # end
-
-    # def connection(name)
-    #   @connections[name]
-    # end
-
-    # def get_default_connection()
-    #   @default
-    # end
-
-    # def set_default_connection(name)
-    #   @default = name
-    # end
-
-    # def get_connections
-    #   @connections
-    # end
+      @client = ArkClient::Client.new()
+    end
   end
 end
