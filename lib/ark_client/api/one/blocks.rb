@@ -3,48 +3,50 @@ module ArkClient
     module API
       module One
         module Blocks
-          def block(id)
-            get('api/blocks/get',{:id => id})
-          end
+          class << self
+            def block(id)
+              get('blocks/get',{:id => id})
+            end
 
-          def blocks(parameters = {})
-            get('api/blocks', parameters)
-          end
+            def blocks(parameters = {})
+              get('blocks', parameters)
+            end
 
-          def epoch
-            get('api/blocks/getEpoch')
-          end
+            def epoch
+              get('blocks/getEpoch')
+            end
 
-          def height
-            get('api/blocks/getHeight')
-          end
+            def height
+              get('blocks/getHeight')
+            end
 
-          def nethash
-            get('api/blocks/getNethash')
-          end
+            def nethash
+              get('blocks/getNethash')
+            end
 
-          def fee
-            get('api/blocks/getFee')
-          end
+            def fee
+              get('blocks/getFee')
+            end
 
-          def fees
-            get('api/blocks/getFees')
-          end
+            def fees
+              get('blocks/getFees')
+            end
 
-          def milestone
-            get('api/blocks/getMilestone')
-          end
+            def milestone
+              get('blocks/getMilestone')
+            end
 
-          def reward
-            get('api/blocks/getReward')
-          end
+            def reward
+              get('blocks/getReward')
+            end
 
-          def supply
-            get('api/blocks/getSupply')
-          end
+            def supply
+              get('blocks/getSupply')
+            end
 
-          def status
-            get('api/blocks/getStatus')
+            def status
+              get('blocks/getStatus')
+            end
           end
         end
       end
