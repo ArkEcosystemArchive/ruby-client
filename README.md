@@ -36,15 +36,19 @@ require 'ark_client'
 client = ArkClient.client
 
 connection = ArkClient::Connection.new({ host: "https://main.host.io:4003/api/", version: 1 }, 'main')
-connectionMain = client.connect(connection)
+client.connect(connection)
 
 connection = ArkClient::Connection.new({ host: "https://back.host.io:4003/api/", version: 1 }, 'backup')
-connectionBack = client.connect(connection)
+client.connect(connection)
 
 begin
-    print connectionMain.get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
+    print client
+      .connection('main')
+      .get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
 rescue
-    print connectionBack.get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
+    print client
+      .connection('back')
+      .get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
 end
 ```
 
