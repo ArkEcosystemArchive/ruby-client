@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "webmock/rspec"
 require "dotenv"
-require "ark-client"
+require "ark_client"
 
 Dotenv.load('.env')
 
@@ -17,8 +17,4 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
-end
-
-def ark_url(path)
-  @client.root + path
 end

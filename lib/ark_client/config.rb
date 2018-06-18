@@ -1,15 +1,12 @@
 module ArkClient
-  module Configurable
-    attr_accessor :ip, :port, :nethash, :version, :network_address
+  module Config
+    attr_accessor :host, :api_version
 
     class << self
       def keys
         @keys ||= [
-          :ip,
-          :port,
-          :nethash,
-          :version,
-          :network_address
+          :host,
+          :api_version
         ]
       end
     end
@@ -21,7 +18,7 @@ module ArkClient
 
     # Reset configuration options to default values
     def reset!
-      ArkClient::Configurable.keys.each do |key|
+      ArkClient::Config.keys.each do |key|
         instance_variable_set(:"@#{key}", ArkClient::Default.options[key])
       end
       self
@@ -39,7 +36,7 @@ module ArkClient
     private
 
     def options
-      Hash[ArkClient::Configurable.keys.map{|key| [key, instance_variable_get(:"@#{key}")]}]
+      Hash[ArkClient::Config.keys.map{|key| [key, instance_variable_get(:"@#{key}")]}]
     end
   end
 end
