@@ -6,8 +6,6 @@ module ArkClient
         class << self
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def status
             get('loader/status')
@@ -15,16 +13,12 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def sync
             get('loader/status/sync')
           end
 
           # Short description of what this function does.
-          #
-          # @param address [String]
           #
           # @return [Hash]
           def autoconfigure

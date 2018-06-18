@@ -21,9 +21,9 @@ module ArkClient
 
     # Short description of what this function does.
     #
-    # @param address [String]
+    # @param config [Hash]
     #
-    # @return [Hash]
+    # @return [ArkClient::Connection]
     def initialize(config)
       @host = config[:host]
       @version = config[:version]
@@ -37,9 +37,7 @@ module ArkClient
 
     # Short description of what this function does.
     #
-    # @param address [String]
-    #
-    # @return [Hash]
+    # @return [nil]
     def include_version_one_methods
       self.singleton_class.send(:include, ArkClient::Client::One::Accounts)
       self.singleton_class.send(:include, ArkClient::Client::One::Blocks)
@@ -52,9 +50,7 @@ module ArkClient
 
     # Short description of what this function does.
     #
-    # @param address [String]
-    #
-    # @return [Hash]
+    # @return [nil]
     def include_version_two_methods
       self.singleton_class.send(:include, ArkClient::Client::Two::Blocks)
       self.singleton_class.send(:include, ArkClient::Client::Two::Delegates)

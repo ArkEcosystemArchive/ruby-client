@@ -4,8 +4,6 @@ module ArkClient
   class Client
     # Short description of what this function does.
     #
-    # @param address [String]
-    #
     # @return [Hash]
     def initialize
       @default = 'main'
@@ -14,7 +12,8 @@ module ArkClient
 
     # Short description of what this function does.
     #
-    # @param address [String]
+    # @param connection [ArkClient::Connection]
+    # @param name [String]
     #
     # @return [Hash]
     def connect(connection, name = 'main')
@@ -23,43 +22,39 @@ module ArkClient
 
     # Short description of what this function does.
     #
-    # @param address [String]
+    # @param name [String]
     #
-    # @return [Hash]
+    # @return [nil]
     def disconnect(name)
       @connections.delete(name)
     end
 
     # Short description of what this function does.
     #
-    # @param address [String]
+    # @param name [String]
     #
-    # @return [Hash]
+    # @return [ArkClient::Connection]
     def connection(name)
       @connections[name]
     end
 
     # Short description of what this function does.
     #
-    # @param address [String]
-    #
-    # @return [Hash]
+    # @return [String]
     def get_default_connection()
       @default
     end
 
     # Short description of what this function does.
     #
-    # @param address [String]
+    # @param name [String]
     #
-    # @return [Hash]
+    # @return [nil]
     def set_default_connection(name)
       @default = name
     end
 
     # Short description of what this function does.
-    #
-    # @param address [String]
     #
     # @return [Hash]
     def get_connections

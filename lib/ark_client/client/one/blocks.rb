@@ -6,16 +6,16 @@ module ArkClient
         class << self
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param id [String]
           #
           # @return [Hash]
           def block(id)
-            get('blocks/get',{:id => id})
+            get('blocks/get', {:id => id})
           end
 
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param parameters [Hash]
           #
           # @return [Hash]
           def blocks(parameters = {})
@@ -24,16 +24,12 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def epoch
             get('blocks/getEpoch')
           end
 
           # Short description of what this function does.
-          #
-          # @param address [String]
           #
           # @return [Hash]
           def height
@@ -42,16 +38,12 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def nethash
             get('blocks/getNethash')
           end
 
           # Short description of what this function does.
-          #
-          # @param address [String]
           #
           # @return [Hash]
           def fee
@@ -60,16 +52,12 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def fees
             get('blocks/getFees')
           end
 
           # Short description of what this function does.
-          #
-          # @param address [String]
           #
           # @return [Hash]
           def milestone
@@ -78,8 +66,6 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def reward
             get('blocks/getReward')
@@ -87,16 +73,12 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def supply
             get('blocks/getSupply')
           end
 
           # Short description of what this function does.
-          #
-          # @param address [String]
           #
           # @return [Hash]
           def status

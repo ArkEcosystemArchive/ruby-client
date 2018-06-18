@@ -6,8 +6,6 @@ module ArkClient
         class << self
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def fee
             get('signatures/fee')

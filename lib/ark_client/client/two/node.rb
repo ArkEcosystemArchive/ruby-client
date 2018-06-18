@@ -6,8 +6,6 @@ module ArkClient
         class << self
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def status
             get("node/status")
@@ -15,16 +13,12 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
-          #
           # @return [Hash]
           def syncing
             get("node/syncing")
           end
 
           # Short description of what this function does.
-          #
-          # @param address [String]
           #
           # @return [Hash]
           def configuration

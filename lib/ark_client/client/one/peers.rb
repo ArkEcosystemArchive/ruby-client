@@ -6,7 +6,8 @@ module ArkClient
         class << self
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param ip [String]
+          # @param port [Integer]
           #
           # @return [Hash]
           def peer(ip, port)
@@ -15,7 +16,7 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param parameters [Hash]
           #
           # @return [Hash]
           def peers(parameters = {})
@@ -23,8 +24,6 @@ module ArkClient
           end
 
           # Short description of what this function does.
-          #
-          # @param address [String]
           #
           # @return [Hash]
           def version

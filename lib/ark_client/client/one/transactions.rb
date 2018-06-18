@@ -6,16 +6,16 @@ module ArkClient
         class << self
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param id [String]
           #
           # @return [Hash]
           def transaction(id)
-            get('transactions/get',{:id => id})
+            get('transactions/get', {:id => id})
           end
 
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param parameters [Hash]
           #
           # @return [Hash]
           def transactions(parameters = {})
@@ -24,16 +24,16 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param id [String]
           #
           # @return [Hash]
           def unconfirmed_transaction(id)
-            get('transactions/unconfirmed/get',{:id => id})
+            get('transactions/unconfirmed/get', {:id => id})
           end
 
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param parameters [Hash]
           #
           # @return [Hash]
           def unconfirmed_transactions(parameters = {})

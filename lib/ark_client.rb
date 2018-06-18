@@ -3,6 +3,9 @@ require 'ark_client/connection'
 
 module ArkClient
   class << self
+    # Short description of what this function does.
+    #
+    # @return [ArkClient::Client]
     def client
       return @client if defined?(@client)
 

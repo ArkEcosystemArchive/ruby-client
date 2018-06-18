@@ -6,7 +6,7 @@ module ArkClient
         class << self
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param parameters [String]
           #
           # @return [Hash]
           def list(parameters = {})
@@ -15,7 +15,7 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param id [String]
           #
           # @return [Hash]
           def get(id)
@@ -24,7 +24,8 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param id [String]
+          # @param parameters [Hash]
           #
           # @return [Hash]
           def transactions(id, parameters = {})
@@ -33,7 +34,7 @@ module ArkClient
 
           # Short description of what this function does.
           #
-          # @param address [String]
+          # @param parameters [Hash]
           #
           # @return [Hash]
           def search(parameters)

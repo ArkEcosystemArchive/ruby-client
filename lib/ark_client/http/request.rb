@@ -6,45 +6,47 @@ module ArkClient
     module Request
       # Short description of what this function does.
       #
-      # @param address [String]
+      # @param url [String]
+      # @param query [Hash]
       #
       # @return [Hash]
-      def get(url, options = {})
-        request :get, url, options
+      def get(url, query = {})
+        request :get, url, query
       end
 
       # Short description of what this function does.
       #
-      # @param address [String]
+      # @param url [String]
+      # @param payload [Hash]
       #
       # @return [Hash]
-      def post(url, options = {})
-        request :post, url, options
+      def post(url, payload = {})
+        request :post, url, payload
       end
 
       # Short description of what this function does.
       #
-      # @param address [String]
+      # @param url [String]
+      # @param payload [Hash]
       #
       # @return [Hash]
-      def put(url, options = {})
-        request :put, url, options
+      def put(url, payload = {})
+        request :put, url, payload
       end
 
       # Short description of what this function does.
       #
-      # @param address [String]
+      # @param url [String]
+      # @param query [Hash]
       #
       # @return [Hash]
-      def delete(url, options = {})
-        request :delete, url, options
+      def delete(url, query = {})
+        request :delete, url, query
       end
 
       # Short description of what this function does.
       #
-      # @param address [String]
-      #
-      # @return [Hash]
+      # @return [String]
       def root
         "#{@host}/"
       end
@@ -53,7 +55,9 @@ module ArkClient
 
       # Short description of what this function does.
       #
-      # @param address [String]
+      # @param method [String]
+      # @param path [String]
+      # @param data [String]
       #
       # @return [Hash]
       def request(method, path, data)
@@ -74,9 +78,7 @@ module ArkClient
 
       # Short description of what this function does.
       #
-      # @param address [String]
-      #
-      # @return [Hash]
+      # @return [Faraday]
       def http
         connection = Faraday.new root do |conn|
           conn.headers['Content-Type'] = 'application/json'
