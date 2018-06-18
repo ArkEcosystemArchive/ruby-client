@@ -28,6 +28,16 @@ Or install it yourself as:
 
     $ gem install ark_client
 
+## Usage
+
+```ruby
+require 'ark_client'
+
+connection = ArkClient::Connection.new({ host: "https://my.host.io:8443/api", version: 1 })
+
+print connection.get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, copy and edit the contents of the `.env.example` file into a file called `.env`. This file represents your network and account details. You can then run the tests using `rake spec`. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
