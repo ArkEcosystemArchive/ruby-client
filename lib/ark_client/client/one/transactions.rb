@@ -24,8 +24,8 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
-        def transactions(parameters = {})
+        # @return [Faraday::Response]
+        def list(parameters = {})
           get('transactions', parameters)
         end
 
@@ -33,8 +33,8 @@ module ArkClient
         #
         # @param id [String]
         #
-        # @return [Hash]
-        def transaction(id)
+        # @return [Faraday::Response]
+        def show(id)
           get('transactions/get', {:id => id})
         end
 
@@ -42,8 +42,8 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
-        def unconfirmed_transactions(parameters = {})
+        # @return [Faraday::Response]
+        def list_unconfirmed(parameters = {})
           get('transactions/unconfirmed', parameters)
         end
 
@@ -51,8 +51,8 @@ module ArkClient
         #
         # @param id [String]
         #
-        # @return [Hash]
-        def unconfirmed_transaction(id)
+        # @return [Faraday::Response]
+        def show_unconfirmed(id)
           get('transactions/unconfirmed/get', {:id => id})
         end
       end

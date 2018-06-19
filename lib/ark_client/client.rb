@@ -7,7 +7,7 @@ module ArkClient
   class Client
     # Create a new client instance.
     #
-    # @return [Hash]
+    # @return [Faraday::Response]
     def initialize
       @default = 'main'
       @connections = {}
@@ -18,7 +18,7 @@ module ArkClient
     # @param connection [ArkClient::Connection]
     # @param name [String]
     #
-    # @return [Hash]
+    # @return [Faraday::Response]
     def connect(connection, name = 'main')
       @connections[name] = connection
     end
@@ -59,7 +59,7 @@ module ArkClient
 
     # Return all of the created connections.
     #
-    # @return [Hash]
+    # @return [Faraday::Response]
     def get_connections
       @connections
     end

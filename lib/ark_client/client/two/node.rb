@@ -22,21 +22,21 @@ module ArkClient
 
         # Get the loader status.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def status
           get("node/status")
         end
 
         # Get the loader syncing status.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def syncing
           get("node/syncing")
         end
 
         # Get the loader configuration.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def configuration
           get("node/configuration")
         end

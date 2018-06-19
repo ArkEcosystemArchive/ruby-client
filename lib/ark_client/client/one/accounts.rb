@@ -24,7 +24,7 @@ module ArkClient
         #
         # @param address [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def balance(address)
           get('accounts/getBalance', { address: address })
         end
@@ -33,7 +33,7 @@ module ArkClient
         #
         # @param address [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def public_key(address)
           get('accounts/getPublickey', { address: address })
         end
@@ -42,8 +42,8 @@ module ArkClient
         #
         # @param address [String]
         #
-        # @return [Hash]
-        def delegates(address)
+        # @return [Faraday::Response]
+        def delegate(address)
           get('accounts/delegates', { address: address })
         end
 
@@ -51,7 +51,7 @@ module ArkClient
         #
         # @param address [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def delegates_fee(address)
           get('accounts/delegates/fee', { address: address })
         end
@@ -60,7 +60,7 @@ module ArkClient
         #
         # @param address [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def account(address)
           get('accounts', { address: address })
         end

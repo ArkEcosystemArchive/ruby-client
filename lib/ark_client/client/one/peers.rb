@@ -24,8 +24,8 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
-        def peers(parameters = {})
+        # @return [Faraday::Response]
+        def list(parameters = {})
           get('peers', parameters)
         end
 
@@ -34,14 +34,14 @@ module ArkClient
         # @param ip [String]
         # @param port [Integer]
         #
-        # @return [Hash]
-        def peer(ip, port)
+        # @return [Faraday::Response]
+        def show(ip, port)
           get('peers/get', {:ip => ip, :port => port})
         end
 
         # Get the node version of the peer.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def version
           get('peers/version')
         end

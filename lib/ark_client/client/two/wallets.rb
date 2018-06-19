@@ -24,7 +24,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def list(parameters = {})
           get("wallets", parameters)
         end
@@ -33,7 +33,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def top(parameters = {})
           get("wallets/top", parameters)
         end
@@ -42,7 +42,7 @@ module ArkClient
         #
         # @param id [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def show(id)
           get("wallets/#{id}")
         end
@@ -52,7 +52,7 @@ module ArkClient
         # @param id [String]
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def transactions(id, parameters = {})
           get("wallets/#{id}/transactions", parameters)
         end
@@ -62,7 +62,7 @@ module ArkClient
         # @param id [String]
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def sent_transactions(id, parameters = {})
           get("wallets/#{id}/transactions/sent", parameters)
         end
@@ -72,7 +72,7 @@ module ArkClient
         # @param id [String]
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def received_transaction(id, parameters = {})
           get("wallets/#{id}/transactions/received", parameters)
         end
@@ -81,7 +81,7 @@ module ArkClient
         #
         # @param if [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def votes(id)
           get("wallets/#{id}/votes")
         end
@@ -90,7 +90,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def search(parameters)
           post("wallets/search", parameters)
         end

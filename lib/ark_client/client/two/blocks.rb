@@ -24,7 +24,7 @@ module ArkClient
         #
         # @param parameters [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def list(parameters = {})
           get("blocks", parameters)
         end
@@ -33,7 +33,7 @@ module ArkClient
         #
         # @param id [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def show(id)
           get("blocks/#{id}")
         end
@@ -43,7 +43,7 @@ module ArkClient
         # @param id [String]
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def transactions(id, parameters = {})
           get("blocks/#{id}/transactions", parameters)
         end
@@ -52,7 +52,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def search(parameters)
           post("blocks/search", parameters)
         end

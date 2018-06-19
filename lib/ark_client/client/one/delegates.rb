@@ -24,8 +24,8 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
-        def delegates(parameters = {})
+        # @return [Faraday::Response]
+        def list(parameters = {})
           get('delegates', parameters)
         end
 
@@ -33,14 +33,14 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
-        def delegate(parameters = {})
+        # @return [Faraday::Response]
+        def show(parameters = {})
           get('delegates/get', parameters)
         end
 
         # Count all delegates.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def count
           get('delegates/count')
         end
@@ -50,7 +50,7 @@ module ArkClient
         # @param q [String]
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def search(q, parameters = {})
           get('delegates/search', {q: q}.merge(parameters))
         end
@@ -60,7 +60,7 @@ module ArkClient
         # @param address [String]
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def voters(public_key, parameters = {})
           get('delegates/voters', {publicKey: public_key}.merge(parameters))
         end
@@ -69,8 +69,8 @@ module ArkClient
         #
         # @param address [String]
         #
-        # @return [Hash]
-        def delegate_fee
+        # @return [Faraday::Response]
+        def fee
           get('delegates/fee')
         end
 
@@ -78,7 +78,7 @@ module ArkClient
         #
         # @param generator_public_key [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def forged_by_account(generator_public_key)
           get('delegates/forging/getForgedByAccount', {generatorPublicKey: generator_public_key})
         end
@@ -87,7 +87,7 @@ module ArkClient
         #
         # @param address [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def next_forgers
           get('delegates/getNextForgers')
         end
@@ -97,7 +97,7 @@ module ArkClient
         # @param public_key [String]
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def forging_status(public_key, parameters = {})
           get('delegates/forging/status', {:publicKey => public_key}.merge(parameters))
         end

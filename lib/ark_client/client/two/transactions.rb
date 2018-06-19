@@ -24,7 +24,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def list(parameters = {})
           get("transactions", parameters)
         end
@@ -33,7 +33,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def create(parameters)
           post("transactions", parameters)
         end
@@ -42,7 +42,7 @@ module ArkClient
         #
         # @param id [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def show(id)
           get("transactions/#{id}")
         end
@@ -51,7 +51,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def list_unconfirmed(parameters = {})
           get("transactions/unconfirmed", parameters)
         end
@@ -60,7 +60,7 @@ module ArkClient
         #
         # @param id [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def get_unconfirmed(id)
           get("transactions/unconfirmed/#{id}")
         end
@@ -69,14 +69,14 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def search(parameters)
           post("transactions/search", parameters)
         end
 
         # Get a list of all transaction types.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def types
           get("transactions/types")
         end

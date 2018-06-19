@@ -24,7 +24,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def list(parameters = {})
           get("peers", parameters)
         end
@@ -33,7 +33,7 @@ module ArkClient
         #
         # @param ip [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def show(ip)
           get("peers/#{ip}")
         end

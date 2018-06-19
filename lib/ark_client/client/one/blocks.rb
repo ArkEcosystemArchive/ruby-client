@@ -24,8 +24,8 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
-        def blocks(parameters = {})
+        # @return [Faraday::Response]
+        def list(parameters = {})
           get('blocks', parameters)
         end
 
@@ -33,70 +33,70 @@ module ArkClient
         #
         # @param id [String]
         #
-        # @return [Hash]
-        def block(id)
+        # @return [Faraday::Response]
+        def show(id)
           get('blocks/get', {:id => id})
         end
 
         # Get the blockchain epoch.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def epoch
           get('blocks/getEpoch')
         end
 
         # Get the blockchain height.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def height
           get('blocks/getHeight')
         end
 
         # Get the blockchain nethash.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def nethash
           get('blocks/getNethash')
         end
 
         # Get the blockchain fee.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def fee
           get('blocks/getFee')
         end
 
         # Get the blockchain fees.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def fees
           get('blocks/getFees')
         end
 
         # Get the blockchain milestone.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def milestone
           get('blocks/getMilestone')
         end
 
         # Get the blockchain reward.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def reward
           get('blocks/getReward')
         end
 
         # Get the blockchain supply.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def supply
           get('blocks/getSupply')
         end
 
         # Get the blockchain status.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def status
           get('blocks/getStatus')
         end

@@ -10,7 +10,7 @@ module ArkClient
 
       # Create a new resource instance.
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def initialize(host)
         @host = host
       end
@@ -19,7 +19,7 @@ module ArkClient
       #
       # @param parameters [Hash]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def list(parameters = {})
         get("webhooks", parameters)
       end
@@ -28,7 +28,7 @@ module ArkClient
       #
       # @param parameters [Hash]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def create(parameters)
         post("webhooks", parameters)
       end
@@ -37,7 +37,7 @@ module ArkClient
       #
       # @param id [String]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def show(id)
         get("webhooks/#{id}")
       end
@@ -46,7 +46,7 @@ module ArkClient
       #
       # @param id [String]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def update(id, parameters)
         put("webhooks/#{id}", parameters)
       end
@@ -55,7 +55,7 @@ module ArkClient
       #
       # @param id [String]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def delete(id)
         delete("webhooks/#{id}")
       end

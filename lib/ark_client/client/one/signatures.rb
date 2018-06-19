@@ -22,7 +22,7 @@ module ArkClient
 
         # Get the signatures fee.
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def fee
           get('signatures/fee')
         end

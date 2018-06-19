@@ -9,7 +9,7 @@ module ArkClient
       # @param url [String]
       # @param query [Hash]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def get(url, query = {})
         request :get, url, query
       end
@@ -19,7 +19,7 @@ module ArkClient
       # @param url [String]
       # @param payload [Hash]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def post(url, payload = {})
         request :post, url, payload
       end
@@ -29,7 +29,7 @@ module ArkClient
       # @param url [String]
       # @param payload [Hash]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def put(url, payload = {})
         request :put, url, payload
       end
@@ -39,7 +39,7 @@ module ArkClient
       # @param url [String]
       # @param query [Hash]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def delete(url, query = {})
         request :delete, url, query
       end
@@ -52,21 +52,9 @@ module ArkClient
       # @param path [String]
       # @param data [String]
       #
-      # @return [Hash]
+      # @return [Faraday::Response]
       def request(method, path, data)
-        request = http.send(method, path, data)
-
-        response = JSON.parse request.body
-
-        if response['success'] == false
-          raise response['error']
-        end
-
-        if response['status'] == false
-          raise response['error']
-        end
-
-        response
+        http.send(method, path, data)
       end
 
       # Create a new Faraday instance.

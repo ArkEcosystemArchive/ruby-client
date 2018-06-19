@@ -24,7 +24,7 @@ module ArkClient
         #
         # @param parameters [Hash]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def list(parameters = {})
           get("votes", parameters)
         end
@@ -33,7 +33,7 @@ module ArkClient
         #
         # @param id [String]
         #
-        # @return [Hash]
+        # @return [Faraday::Response]
         def show(id)
           get("votes/#{id}")
         end
