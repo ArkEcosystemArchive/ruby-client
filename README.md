@@ -44,11 +44,11 @@ client.connect(connection)
 begin
     print client
       .connection('main')
-      .get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
+      .accounts.balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
 rescue
     print client
       .connection('back')
-      .get_account_balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
+      .accounts.balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
 end
 ```
 

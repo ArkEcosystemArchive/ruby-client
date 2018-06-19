@@ -1,3 +1,5 @@
+require 'ark_client/http/request'
+
 module ArkClient
   class Client
     # Methods for Version 1 of the API
@@ -5,7 +7,19 @@ module ArkClient
     # @see https://docs.ark.io/v1.0/reference#api-v1-accounts
     module One
       # Methods for the Accounts API
-      module Accounts
+      class Accounts
+        include ArkClient::HTTP::Request
+
+        # Create a new resource instance.
+        #
+        # @param host [String]
+        #
+        # @return [ArkClient::Client::One::Accounts]
+        def initialize(host)
+          @host = host
+          @version = 1
+        end
+
         # Get the balance for the given address.
         #
         # @param address [String]

@@ -44,13 +44,6 @@ module ArkClient
         request :delete, url, query
       end
 
-      # Get the host (root) of the request url.
-      #
-      # @return [String]
-      def root
-        "#{@host}/"
-      end
-
       private
 
       # Create and send a HTTP request.
@@ -80,9 +73,12 @@ module ArkClient
       #
       # @return [Faraday]
       def http
-        connection = Faraday.new root do |conn|
+        connection = Faraday.new "#{@host}/" do |conn|
           conn.headers['Content-Type'] = 'application/json'
-          conn.headers['API-Version'] = "#{@version}"
+
+          unless @version.nil?
+            conn.headers['API-Version'] = "#{@version}"
+          end
 
           conn.request :json
 

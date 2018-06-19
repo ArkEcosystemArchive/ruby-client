@@ -25,53 +25,152 @@ module ArkClient
     #
     # @return [ArkClient::Connection]
     def initialize(config)
-      @host = config[:host]
-      @version = config[:version]
+      if config.key?(:host)
+        @host = config[:host]
+      else
+        raise "No host was specified!"
+      end
 
+      if config.key?(:version)
+        @version = config[:version]
+      else
+        @version = config[:version]
+      end
+    end
+
+    # Return the Accounts API resource.
+    #
+    # @return [Object]
+    def accounts
       case @version
       when 1
-        include_version_one_methods
-      when 2
-        include_version_two_methods
-      when "webhooks"
-        include_webhooks_methods
+        @accounts ||= ArkClient::Client::One::Accounts.new(@host)
       else
         raise NotImplementedError
       end
     end
 
-    # Register the version 1 API resources.
+    # Return the Blocks API resource.
     #
-    # @return [nil]
-    def include_version_one_methods
-      self.singleton_class.send(:include, ArkClient::Client::One::Accounts)
-      self.singleton_class.send(:include, ArkClient::Client::One::Blocks)
-      self.singleton_class.send(:include, ArkClient::Client::One::Delegates)
-      self.singleton_class.send(:include, ArkClient::Client::One::Loader)
-      self.singleton_class.send(:include, ArkClient::Client::One::Peers)
-      self.singleton_class.send(:include, ArkClient::Client::One::Signatures)
-      self.singleton_class.send(:include, ArkClient::Client::One::Transactions)
+    # @return [Object]
+    def blocks
+      case @version
+      when 1
+        @blocks ||= ArkClient::Client::One::Blocks.new(@host)
+      when 2
+        @blocks ||= ArkClient::Client::Two::Blocks.new(@host)
+      else
+        raise NotImplementedError
+      end
     end
 
-    # Register the version 2 API resources.
+    # Return the Delegates API resource.
     #
-    # @return [nil]
-    def include_version_two_methods
-      self.singleton_class.send(:include, ArkClient::Client::Two::Blocks)
-      self.singleton_class.send(:include, ArkClient::Client::Two::Delegates)
-      self.singleton_class.send(:include, ArkClient::Client::Two::Node)
-      self.singleton_class.send(:include, ArkClient::Client::Two::Peers)
-      self.singleton_class.send(:include, ArkClient::Client::Two::Transactions)
-      self.singleton_class.send(:include, ArkClient::Client::Two::Votes)
-      self.singleton_class.send(:include, ArkClient::Client::Two::Wallets)
-      self.singleton_class.send(:include, ArkClient::Client::Two::Webhooks)
+    # @return [Object]
+    def delegates
+      case @version
+      when 1
+        @delegates ||= ArkClient::Client::One::Delegates.new(@host)
+      when 2
+        @delegates ||= ArkClient::Client::Two::Delegates.new(@host)
+      else
+        raise NotImplementedError
+      end
     end
 
-    # Register the webhooks API resources.
+    # Return the Loader API resource.
     #
-    # @return [nil]
-    def include_webhooks_methods
-      self.singleton_class.send(:include, ArkClient::Client::Webhooks)
+    # @return [Object]
+    def loader
+      case @version
+      when 1
+        @loader ||= ArkClient::Client::One::Loader.new(@host)
+      else
+        raise NotImplementedError
+      end
+    end
+
+    # Return the Node API resource.
+    #
+    # @return [Object]
+    def node
+      case @version
+      when 2
+        @node ||= ArkClient::Client::Two::Node.new(@host)
+      else
+        raise NotImplementedError
+      end
+    end
+
+    # Return the Peers API resource.
+    #
+    # @return [Object]
+    def peers
+      case @version
+      when 1
+        @peers ||= ArkClient::Client::One::Peers.new(@host)
+      when 2
+        @peers ||= ArkClient::Client::Two::Peers.new(@host)
+      else
+        raise NotImplementedError
+      end
+    end
+
+    # Return the Signatures API resource.
+    #
+    # @return [Object]
+    def signatures
+      case @version
+      when 1
+        @signatures ||= ArkClient::Client::One::Signatures.new(@host)
+      else
+        raise NotImplementedError
+      end
+    end
+
+    # Return the Transactions API resource.
+    #
+    # @return [Object]
+    def transactions
+      case @version
+      when 1
+        @transactions ||= ArkClient::Client::One::Transactions.new(@host)
+      when 2
+        @transactions ||= ArkClient::Client::Two::Transactions.new(@host)
+      else
+        raise NotImplementedError
+      end
+    end
+
+    # Return the Vptes API resource.
+    #
+    # @return [Object]
+    def votes
+      case @version
+      when 2
+        @votes ||= ArkClient::Client::Two::Votes.new(@host)
+      else
+        raise NotImplementedError
+      end
+    end
+
+    # Return the Wallets API resource.
+    #
+    # @return [Object]
+    def Wallets
+      case @version
+      when 2
+        @wallets ||= ArkClient::Client::Two::Wallets.new(@host)
+      else
+        raise NotImplementedError
+      end
+    end
+
+    # Return the Webhooks API resource.
+    #
+    # @return [Object]
+    def webhooks
+      @webhooks ||= ArkClient::Client::Webhooks.new(@host)
     end
   end
 end
