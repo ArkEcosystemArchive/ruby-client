@@ -42,13 +42,19 @@ connection = ArkClient::Connection.new({ host: "https://back.host.io:4003/api/",
 client.connect(connection)
 
 begin
-    print client
+    response = JSON.parse client
       .connection('main')
-      .accounts.balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
+      .accounts.balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')
+      .body
+
+    print response['balance']
 rescue
-    print client
+    response = JSON.parse client
       .connection('back')
-      .accounts.balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')['balance']
+      .accounts.balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')
+      .body
+
+    print response['balance']
 end
 ```
 
