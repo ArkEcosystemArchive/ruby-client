@@ -1,10 +1,13 @@
 module ArkClient
   class Client
+    # Methods for Version 2 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v2-blocks
     module Two
       # Methods for the Blocks API
       module Blocks
         class << self
-          # Short description of what this function does.
+          # Get all blocks.
           #
           # @param parameters [String]
           #
@@ -13,16 +16,16 @@ module ArkClient
             get("blocks", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the block by the given id.
           #
           # @param id [String]
           #
           # @return [Hash]
-          def get(id)
+          def show(id)
             get("blocks/#{id}")
           end
 
-          # Short description of what this function does.
+          # Get the transaction  for the given block.
           #
           # @param id [String]
           # @param parameters [Hash]
@@ -32,7 +35,7 @@ module ArkClient
             get("blocks/#{id}/transactions", parameters)
           end
 
-          # Short description of what this function does.
+          # Search all blocks.
           #
           # @param parameters [Hash]
           #

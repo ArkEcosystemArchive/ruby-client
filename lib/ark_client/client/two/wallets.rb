@@ -1,10 +1,13 @@
 module ArkClient
   class Client
+    # Methods for Version 2 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v2-wallets
     module Two
       # Methods for the Wallets API
       module Wallets
         class << self
-          # Short description of what this function does.
+          # Get all wallets.
           #
           # @param parameters [Hash]
           #
@@ -13,7 +16,7 @@ module ArkClient
             get("wallets", parameters)
           end
 
-          # Short description of what this function does.
+          # Get all wallets sorted by balance.
           #
           # @param parameters [Hash]
           #
@@ -22,16 +25,16 @@ module ArkClient
             get("wallets/top", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the wallet by the given id.
           #
           # @param id [String]
           #
           # @return [Hash]
-          def get(id)
+          def show(id)
             get("wallets/#{id}")
           end
 
-          # Short description of what this function does.
+          # Get the transactions for the given wallet.
           #
           # @param id [String]
           # @param parameters [Hash]
@@ -41,7 +44,7 @@ module ArkClient
             get("wallets/#{id}/transactions", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the sent transactions for the given wallet.
           #
           # @param id [String]
           # @param parameters [Hash]
@@ -51,7 +54,7 @@ module ArkClient
             get("wallets/#{id}/transactions/sent", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the received transactions for the given wallet.
           #
           # @param id [String]
           # @param parameters [Hash]
@@ -61,7 +64,7 @@ module ArkClient
             get("wallets/#{id}/transactions/received", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the votes for the given wallet.
           #
           # @param if [String]
           #
@@ -70,7 +73,7 @@ module ArkClient
             get("wallets/#{id}/votes")
           end
 
-          # Short description of what this function does.
+          # Search all wallets.
           #
           # @param parameters [Hash]
           #

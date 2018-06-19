@@ -1,19 +1,13 @@
 module ArkClient
   class Client
+    # Methods for Version 1 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v1-blocks
     module One
       # Methods for the Blocks API
       module Blocks
         class << self
-          # Short description of what this function does.
-          #
-          # @param id [String]
-          #
-          # @return [Hash]
-          def block(id)
-            get('blocks/get', {:id => id})
-          end
-
-          # Short description of what this function does.
+          # Get all blocks.
           #
           # @param parameters [Hash]
           #
@@ -22,63 +16,72 @@ module ArkClient
             get('blocks', parameters)
           end
 
-          # Short description of what this function does.
+          # Get the delegate by the given id.
+          #
+          # @param id [String]
+          #
+          # @return [Hash]
+          def block(id)
+            get('blocks/get', {:id => id})
+          end
+
+          # Get the blockchain epoch.
           #
           # @return [Hash]
           def epoch
             get('blocks/getEpoch')
           end
 
-          # Short description of what this function does.
+          # Get the blockchain height.
           #
           # @return [Hash]
           def height
             get('blocks/getHeight')
           end
 
-          # Short description of what this function does.
+          # Get the blockchain nethash.
           #
           # @return [Hash]
           def nethash
             get('blocks/getNethash')
           end
 
-          # Short description of what this function does.
+          # Get the blockchain fee.
           #
           # @return [Hash]
           def fee
             get('blocks/getFee')
           end
 
-          # Short description of what this function does.
+          # Get the blockchain fees.
           #
           # @return [Hash]
           def fees
             get('blocks/getFees')
           end
 
-          # Short description of what this function does.
+          # Get the blockchain milestone.
           #
           # @return [Hash]
           def milestone
             get('blocks/getMilestone')
           end
 
-          # Short description of what this function does.
+          # Get the blockchain reward.
           #
           # @return [Hash]
           def reward
             get('blocks/getReward')
           end
 
-          # Short description of what this function does.
+          # Get the blockchain supply.
           #
           # @return [Hash]
           def supply
             get('blocks/getSupply')
           end
 
-          # Short description of what this function does.
+          # Get the blockchain status.
           #
           # @return [Hash]
           def status

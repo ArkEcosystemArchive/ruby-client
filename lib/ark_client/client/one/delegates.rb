@@ -1,17 +1,38 @@
 module ArkClient
   class Client
+    # Methods for Version 1 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v1-delegates
     module One
       # Methods for the Delegates API
       module Delegates
         class << self
-          # Short description of what this function does.
+          # Get all delegates.
+          #
+          # @param parameters [Hash]
+          #
+          # @return [Hash]
+          def delegates(parameters = {})
+            get('delegates', parameters)
+          end
+
+          # Get the delegate by the given id.
+          #
+          # @param parameters [Hash]
+          #
+          # @return [Hash]
+          def delegate(parameters = {})
+            get('delegates/get', parameters)
+          end
+
+          # Count all delegates.
           #
           # @return [Hash]
           def count
             get('delegates/count')
           end
 
-          # Short description of what this function does.
+          # Search all delegates.
           #
           # @param q [String]
           # @param parameters [Hash]
@@ -21,7 +42,7 @@ module ArkClient
             get('delegates/search', {q: q}.merge(parameters))
           end
 
-          # Short description of what this function does.
+          # Get the voters for the given delegate.
           #
           # @param address [String]
           # @param parameters [Hash]
@@ -31,25 +52,7 @@ module ArkClient
             get('delegates/voters', {publicKey: public_key}.merge(parameters))
           end
 
-          # Short description of what this function does.
-          #
-          # @param parameters [Hash]
-          #
-          # @return [Hash]
-          def delegate(parameters = {})
-            get('delegates/get', parameters)
-          end
-
-          # Short description of what this function does.
-          #
-          # @param parameters [Hash]
-          #
-          # @return [Hash]
-          def delegates(parameters = {})
-            get('delegates', parameters)
-          end
-
-          # Short description of what this function does.
+          # Get the delegate registration fee.
           #
           # @param address [String]
           #
@@ -58,7 +61,7 @@ module ArkClient
             get('delegates/fee')
           end
 
-          # Short description of what this function does.
+          # Get the total forged for the given delegate.
           #
           # @param generator_public_key [String]
           #
@@ -67,7 +70,7 @@ module ArkClient
             get('delegates/forging/getForgedByAccount', {generatorPublicKey: generator_public_key})
           end
 
-          # Short description of what this function does.
+          # Get a list of the next forgers.
           #
           # @param address [String]
           #
@@ -76,14 +79,14 @@ module ArkClient
             get('delegates/getNextForgers')
           end
 
-          # Short description of what this function does.
+          # Get the forging status for the given delegate.
           #
           # @param public_key [String]
           # @param parameters [Hash]
           #
           # @return [Hash]
           def forging_status(public_key, parameters = {})
-            post('delegates/forging/disable', {:publicKey => public_key}.merge(parameters))
+            get('delegates/forging/status', {:publicKey => public_key}.merge(parameters))
           end
         end
       end

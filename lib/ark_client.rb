@@ -1,6 +1,7 @@
 require 'ark_client/client'
 require 'ark_client/connection'
 
+# Ruby client for the Ark Core API
 module ArkClient
   class << self
     # Short description of what this function does.

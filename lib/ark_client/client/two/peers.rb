@@ -1,10 +1,13 @@
 module ArkClient
   class Client
+    # Methods for Version 2 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v2-peers
     module Two
       # Methods for the Peers API
       module Peers
         class << self
-          # Short description of what this function does.
+          # Get all peers.
           #
           # @param parameters [Hash]
           #
@@ -13,13 +16,13 @@ module ArkClient
             get("peers", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the peer by the given ip.
           #
-          # @param id [String]
+          # @param ip [String]
           #
           # @return [Hash]
-          def get(id)
-            get("peers/#{id}")
+          def show(ip)
+            get("peers/#{ip}")
           end
         end
       end

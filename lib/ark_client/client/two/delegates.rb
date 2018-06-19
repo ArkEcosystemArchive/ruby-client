@@ -1,10 +1,13 @@
 module ArkClient
   class Client
+    # Methods for Version 2 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v2-delegates
     module Two
       # Methods for the Delegates API
       module Delegates
         class << self
-          # Short description of what this function does.
+          # Get all delegates.
           #
           # @param parameters [Hash]
           #
@@ -13,16 +16,16 @@ module ArkClient
             get("delegates", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the delegate by the given id.
           #
           # @param id [String]
           #
           # @return [Hash]
-          def get(id)
+          def show(id)
             get("delegates/#{id}")
           end
 
-          # Short description of what this function does.
+          # Get the blocks for the given delegate.
           #
           # @param id [String]
           # @param parameters [Hash]
@@ -32,7 +35,7 @@ module ArkClient
             get("delegates/#{id}/blocks", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the votes for the given delegate.
           #
           # @param id [String]
           # @param parameters [Hash]

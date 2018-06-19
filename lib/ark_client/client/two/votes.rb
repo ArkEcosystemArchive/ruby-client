@@ -1,10 +1,13 @@
 module ArkClient
   class Client
+    # Methods for Version 2 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v2-votes
     module Two
       # Methods for the Votes API
       module Votes
         class << self
-          # Short description of what this function does.
+          # Get all votes.
           #
           # @param parameters [Hash]
           #
@@ -13,12 +16,12 @@ module ArkClient
             get("votes", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the vote by the given id.
           #
           # @param id [String]
           #
           # @return [Hash]
-          def get(id)
+          def show(id)
             get("votes/#{id}")
           end
         end

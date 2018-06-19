@@ -1,18 +1,21 @@
 module ArkClient
   class Client
+    # Methods for Version 1 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v1-accounts
     module One
       # Methods for the Accounts API
       module Accounts
-        # Short description of what this function does.
+        # Get the balance for the given address.
         #
         # @param address [String]
         #
         # @return [Hash]
-        def get_account_balance(address)
+        def balance(address)
           get('accounts/getBalance', { address: address })
         end
 
-        # Short description of what this function does.
+        # Get the public key for the given address.
         #
         # @param address [String]
         #
@@ -21,7 +24,7 @@ module ArkClient
           get('accounts/getPublickey', { address: address })
         end
 
-        # Short description of what this function does.
+        # Get the delegate by the given address.
         #
         # @param address [String]
         #
@@ -30,7 +33,7 @@ module ArkClient
           get('accounts/delegates', { address: address })
         end
 
-        # Short description of what this function does.
+        # Get the delegate registration fee.
         #
         # @param address [String]
         #
@@ -39,7 +42,7 @@ module ArkClient
           get('accounts/delegates/fee', { address: address })
         end
 
-        # Short description of what this function does.
+        # Get the account by the given address.
         #
         # @param address [String]
         #

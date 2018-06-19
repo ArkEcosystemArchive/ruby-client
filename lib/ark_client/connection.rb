@@ -13,13 +13,13 @@ require 'ark_client/client/two/peers'
 require 'ark_client/client/two/transactions'
 require 'ark_client/client/two/votes'
 require 'ark_client/client/two/wallets'
-require 'ark_client/client/two/webhooks'
+require 'ark_client/client/webhooks'
 
 module ArkClient
   class Connection
     include ArkClient::HTTP::Request
 
-    # Short description of what this function does.
+    # Create a new connection instance.
     #
     # @param config [Hash]
     #
@@ -28,14 +28,19 @@ module ArkClient
       @host = config[:host]
       @version = config[:version]
 
-      if @version === 1
+      case @version
+      when 1
         include_version_one_methods
-      else
+      when 2
         include_version_two_methods
+      when "webhooks"
+        include_webhooks_methods
+      else
+        raise NotImplementedError
       end
     end
 
-    # Short description of what this function does.
+    # Register the version 1 API resources.
     #
     # @return [nil]
     def include_version_one_methods
@@ -48,7 +53,7 @@ module ArkClient
       self.singleton_class.send(:include, ArkClient::Client::One::Transactions)
     end
 
-    # Short description of what this function does.
+    # Register the version 2 API resources.
     #
     # @return [nil]
     def include_version_two_methods
@@ -60,6 +65,13 @@ module ArkClient
       self.singleton_class.send(:include, ArkClient::Client::Two::Votes)
       self.singleton_class.send(:include, ArkClient::Client::Two::Wallets)
       self.singleton_class.send(:include, ArkClient::Client::Two::Webhooks)
+    end
+
+    # Register the webhooks API resources.
+    #
+    # @return [nil]
+    def include_webhooks_methods
+      self.singleton_class.send(:include, ArkClient::Client::Webhooks)
     end
   end
 end

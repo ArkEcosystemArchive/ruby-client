@@ -1,10 +1,13 @@
 module ArkClient
   class Client
+    # Methods for Version 2 of the API
+    #
+    # @see https://docs.ark.io/v1.0/reference#api-v2-transactions
     module Two
       # Methods for the Transactions API
       module Transactions
         class << self
-          # Short description of what this function does.
+          # Get all transactions.
           #
           # @param parameters [Hash]
           #
@@ -13,7 +16,7 @@ module ArkClient
             get("transactions", parameters)
           end
 
-          # Short description of what this function does.
+          # Create new transactions.
           #
           # @param parameters [Hash]
           #
@@ -22,16 +25,16 @@ module ArkClient
             post("transactions", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the transaction by the given id.
           #
           # @param id [String]
           #
           # @return [Hash]
-          def get(id)
+          def show(id)
             get("transactions/#{id}")
           end
 
-          # Short description of what this function does.
+          # Get all unconfirmed transactions.
           #
           # @param parameters [Hash]
           #
@@ -40,7 +43,7 @@ module ArkClient
             get("transactions/unconfirmed", parameters)
           end
 
-          # Short description of what this function does.
+          # Get the unconfirmed transaction by the given id.
           #
           # @param id [String]
           #
@@ -49,7 +52,7 @@ module ArkClient
             get("transactions/unconfirmed/#{id}")
           end
 
-          # Short description of what this function does.
+          # Search all transactions.
           #
           # @param parameters [Hash]
           #
@@ -58,7 +61,7 @@ module ArkClient
             post("transactions/search", parameters)
           end
 
-          # Short description of what this function does.
+          # Get a list of all transaction types.
           #
           # @return [Hash]
           def types

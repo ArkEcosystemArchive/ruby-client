@@ -4,7 +4,7 @@ require 'faraday_middleware'
 module ArkClient
   module HTTP
     module Request
-      # Short description of what this function does.
+      # Create and send a HTTP "GET" request.
       #
       # @param url [String]
       # @param query [Hash]
@@ -14,7 +14,7 @@ module ArkClient
         request :get, url, query
       end
 
-      # Short description of what this function does.
+      # Create and send a HTTP "POST" request.
       #
       # @param url [String]
       # @param payload [Hash]
@@ -24,7 +24,7 @@ module ArkClient
         request :post, url, payload
       end
 
-      # Short description of what this function does.
+      # Create and send a HTTP "PUT" request.
       #
       # @param url [String]
       # @param payload [Hash]
@@ -34,7 +34,7 @@ module ArkClient
         request :put, url, payload
       end
 
-      # Short description of what this function does.
+      # Create and send a HTTP "DELETE" request.
       #
       # @param url [String]
       # @param query [Hash]
@@ -44,7 +44,7 @@ module ArkClient
         request :delete, url, query
       end
 
-      # Short description of what this function does.
+      # Get the host (root) of the request url.
       #
       # @return [String]
       def root
@@ -53,7 +53,7 @@ module ArkClient
 
       private
 
-      # Short description of what this function does.
+      # Create and send a HTTP request.
       #
       # @param method [String]
       # @param path [String]
@@ -76,7 +76,7 @@ module ArkClient
         response
       end
 
-      # Short description of what this function does.
+      # Create a new Faraday instance.
       #
       # @return [Faraday]
       def http

@@ -1,8 +1,11 @@
 require 'ark_client/connection'
 
 module ArkClient
+  # Client for the Ark Core API
+  #
+  # @see https://docs.ark.io/v1.0/reference
   class Client
-    # Short description of what this function does.
+    # Create a new client instance.
     #
     # @return [Hash]
     def initialize
@@ -10,7 +13,7 @@ module ArkClient
       @connections = {}
     end
 
-    # Short description of what this function does.
+    # Connection to the given connection.
     #
     # @param connection [ArkClient::Connection]
     # @param name [String]
@@ -20,7 +23,7 @@ module ArkClient
       @connections[name] = connection
     end
 
-    # Short description of what this function does.
+    # Disconnect from the given connection.
     #
     # @param name [String]
     #
@@ -29,7 +32,7 @@ module ArkClient
       @connections.delete(name)
     end
 
-    # Short description of what this function does.
+    # Get a connection instance.
     #
     # @param name [String]
     #
@@ -38,14 +41,14 @@ module ArkClient
       @connections[name]
     end
 
-    # Short description of what this function does.
+    # Get the default connection name.
     #
     # @return [String]
     def get_default_connection()
       @default
     end
 
-    # Short description of what this function does.
+    # Set the default connection name.
     #
     # @param name [String]
     #
@@ -54,7 +57,7 @@ module ArkClient
       @default = name
     end
 
-    # Short description of what this function does.
+    # Return all of the created connections.
     #
     # @return [Hash]
     def get_connections
