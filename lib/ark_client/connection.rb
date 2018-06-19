@@ -25,17 +25,11 @@ module ArkClient
     #
     # @return [ArkClient::Connection]
     def initialize(config)
-      if config.key?(:host)
-        @host = config[:host]
-      else
-        raise "No host was specified!"
-      end
+      @host = config[:host]
+      @version = config[:version]
 
-      if config.key?(:version)
-        @version = config[:version]
-      else
-        @version = config[:version]
-      end
+      raise ArgumentError, 'No API host is provided.' if @host.nil?
+      raise ArgumentError, 'No API version is provided.' if @version.nil?
     end
 
     # Return the Accounts API resource.
