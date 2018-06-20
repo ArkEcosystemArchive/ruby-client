@@ -1,11 +1,11 @@
 require 'ark_client/http/request'
 
 module ArkClient
-  class Client
-    # Methods for Version 1 of the API
+  class API
+    # Methods for Version 2 of the API
     #
-    # @see https://docs.ark.io/v1.0/reference#api-v1-peers
-    module One
+    # @see https://docs.ark.io/v1.0/reference#api-v2-peers
+    module Two
       # Methods for the Peers API
       class Peers
         include ArkClient::HTTP::Request
@@ -14,10 +14,10 @@ module ArkClient
         #
         # @param host [String]
         #
-        # @return [ArkClient::Client::Peers::Accounts]
+        # @return [ArkClient::Client::Two::Peers]
         def initialize(host)
           @host = host
-          @version = 1
+          @version = 2
         end
 
         # Get all peers.
@@ -26,24 +26,16 @@ module ArkClient
         #
         # @return [Faraday::Response]
         def list(parameters = {})
-          get('peers', parameters)
+          get("peers", parameters)
         end
 
-        # Get the peer by the given ip and port.
+        # Get the peer by the given ip.
         #
         # @param ip [String]
-        # @param port [Integer]
         #
         # @return [Faraday::Response]
-        def show(ip, port)
-          get('peers/get', {:ip => ip, :port => port})
-        end
-
-        # Get the node version of the peer.
-        #
-        # @return [Faraday::Response]
-        def version
-          get('peers/version')
+        def show(ip)
+          get("peers/#{ip}")
         end
       end
     end

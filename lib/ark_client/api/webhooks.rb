@@ -1,7 +1,7 @@
 require 'ark_client/http/request'
 
 module ArkClient
-  class Client
+  class API
     # Methods for Webhooks API
     #
     # @see https://docs.ark.io/v1.0/reference#api-webhooks

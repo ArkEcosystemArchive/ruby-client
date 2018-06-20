@@ -1,19 +1,19 @@
 require 'ark_client/http/request'
-require 'ark_client/client/one/accounts'
-require 'ark_client/client/one/blocks'
-require 'ark_client/client/one/delegates'
-require 'ark_client/client/one/loader'
-require 'ark_client/client/one/peers'
-require 'ark_client/client/one/signatures'
-require 'ark_client/client/one/transactions'
-require 'ark_client/client/two/blocks'
-require 'ark_client/client/two/delegates'
-require 'ark_client/client/two/node'
-require 'ark_client/client/two/peers'
-require 'ark_client/client/two/transactions'
-require 'ark_client/client/two/votes'
-require 'ark_client/client/two/wallets'
-require 'ark_client/client/webhooks'
+require 'ark_client/api/one/accounts'
+require 'ark_client/api/one/blocks'
+require 'ark_client/api/one/delegates'
+require 'ark_client/api/one/loader'
+require 'ark_client/api/one/peers'
+require 'ark_client/api/one/signatures'
+require 'ark_client/api/one/transactions'
+require 'ark_client/api/two/blocks'
+require 'ark_client/api/two/delegates'
+require 'ark_client/api/two/node'
+require 'ark_client/api/two/peers'
+require 'ark_client/api/two/transactions'
+require 'ark_client/api/two/votes'
+require 'ark_client/api/two/wallets'
+require 'ark_client/api/webhooks'
 
 module ArkClient
   class Connection
@@ -38,7 +38,7 @@ module ArkClient
     def accounts
       case @version
       when 1
-        @accounts ||= ArkClient::Client::One::Accounts.new(@host)
+        @accounts ||= ArkClient::API::One::Accounts.new(@host)
       else
         raise NotImplementedError
       end
@@ -50,9 +50,9 @@ module ArkClient
     def blocks
       case @version
       when 1
-        @blocks ||= ArkClient::Client::One::Blocks.new(@host)
+        @blocks ||= ArkClient::API::One::Blocks.new(@host)
       when 2
-        @blocks ||= ArkClient::Client::Two::Blocks.new(@host)
+        @blocks ||= ArkClient::API::Two::Blocks.new(@host)
       else
         raise NotImplementedError
       end
@@ -64,9 +64,9 @@ module ArkClient
     def delegates
       case @version
       when 1
-        @delegates ||= ArkClient::Client::One::Delegates.new(@host)
+        @delegates ||= ArkClient::API::One::Delegates.new(@host)
       when 2
-        @delegates ||= ArkClient::Client::Two::Delegates.new(@host)
+        @delegates ||= ArkClient::API::Two::Delegates.new(@host)
       else
         raise NotImplementedError
       end
@@ -78,7 +78,7 @@ module ArkClient
     def loader
       case @version
       when 1
-        @loader ||= ArkClient::Client::One::Loader.new(@host)
+        @loader ||= ArkClient::API::One::Loader.new(@host)
       else
         raise NotImplementedError
       end
@@ -90,7 +90,7 @@ module ArkClient
     def node
       case @version
       when 2
-        @node ||= ArkClient::Client::Two::Node.new(@host)
+        @node ||= ArkClient::API::Two::Node.new(@host)
       else
         raise NotImplementedError
       end
@@ -102,9 +102,9 @@ module ArkClient
     def peers
       case @version
       when 1
-        @peers ||= ArkClient::Client::One::Peers.new(@host)
+        @peers ||= ArkClient::API::One::Peers.new(@host)
       when 2
-        @peers ||= ArkClient::Client::Two::Peers.new(@host)
+        @peers ||= ArkClient::API::Two::Peers.new(@host)
       else
         raise NotImplementedError
       end
@@ -116,7 +116,7 @@ module ArkClient
     def signatures
       case @version
       when 1
-        @signatures ||= ArkClient::Client::One::Signatures.new(@host)
+        @signatures ||= ArkClient::API::One::Signatures.new(@host)
       else
         raise NotImplementedError
       end
@@ -128,9 +128,9 @@ module ArkClient
     def transactions
       case @version
       when 1
-        @transactions ||= ArkClient::Client::One::Transactions.new(@host)
+        @transactions ||= ArkClient::API::One::Transactions.new(@host)
       when 2
-        @transactions ||= ArkClient::Client::Two::Transactions.new(@host)
+        @transactions ||= ArkClient::API::Two::Transactions.new(@host)
       else
         raise NotImplementedError
       end
@@ -142,7 +142,7 @@ module ArkClient
     def votes
       case @version
       when 2
-        @votes ||= ArkClient::Client::Two::Votes.new(@host)
+        @votes ||= ArkClient::API::Two::Votes.new(@host)
       else
         raise NotImplementedError
       end
@@ -154,7 +154,7 @@ module ArkClient
     def Wallets
       case @version
       when 2
-        @wallets ||= ArkClient::Client::Two::Wallets.new(@host)
+        @wallets ||= ArkClient::API::Two::Wallets.new(@host)
       else
         raise NotImplementedError
       end
@@ -164,7 +164,7 @@ module ArkClient
     #
     # @return [Object]
     def webhooks
-      @webhooks ||= ArkClient::Client::Webhooks.new(@host)
+      @webhooks ||= ArkClient::API::Webhooks.new(@host)
     end
   end
 end

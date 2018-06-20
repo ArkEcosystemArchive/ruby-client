@@ -1,44 +1,44 @@
 require 'ark_client/http/request'
 
 module ArkClient
-  class Client
-    # Methods for Version 2 of the API
+  class API
+    # Methods for Version 1 of the API
     #
-    # @see https://docs.ark.io/v1.0/reference#api-v2-node
-    module Two
-      # Methods for the Node API
-      class Node
+    # @see https://docs.ark.io/v1.0/reference#api-v1-loader
+    module One
+      # Methods for the Loader API
+      class Loader
         include ArkClient::HTTP::Request
 
         # Create a new resource instance.
         #
         # @param host [String]
         #
-        # @return [ArkClient::Client::Two::Node]
+        # @return [ArkClient::Client::One::Loader]
         def initialize(host)
           @host = host
-          @version = 2
+          @version = 1
         end
 
         # Get the loader status.
         #
         # @return [Faraday::Response]
         def status
-          get("node/status")
+          get('loader/status')
         end
 
         # Get the loader syncing status.
         #
         # @return [Faraday::Response]
-        def syncing
-          get("node/syncing")
+        def sync
+          get('loader/status/sync')
         end
 
         # Get the loader configuration.
         #
         # @return [Faraday::Response]
-        def configuration
-          get("node/configuration")
+        def autoconfigure
+          get('loader/autoconfigure')
         end
       end
     end
