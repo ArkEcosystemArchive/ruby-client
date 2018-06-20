@@ -13,7 +13,6 @@ require 'ark_client/api/two/peers'
 require 'ark_client/api/two/transactions'
 require 'ark_client/api/two/votes'
 require 'ark_client/api/two/wallets'
-require 'ark_client/api/webhooks'
 
 module ArkClient
   class Connection
@@ -158,13 +157,6 @@ module ArkClient
       else
         raise NotImplementedError
       end
-    end
-
-    # Return the Webhooks API resource.
-    #
-    # @return [Object]
-    def webhooks
-      @webhooks ||= ArkClient::API::Webhooks.new(@host)
     end
   end
 end
