@@ -99,7 +99,7 @@ module ArkClient
         #
         # @return [Faraday::Response]
         def forging_status(public_key, parameters = {})
-          get('delegates/forging/status', {:publicKey => public_key}.merge(parameters))
+          get('delegates/forging/status', {publicKey: public_key}.merge(parameters))
         end
       end
     end
