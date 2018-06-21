@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe ArkClient::Client::Two::Blocks do
   before do
     @client = ArkClient::Connection.new({ host: "https://dexplorer.ark.io:8443/api/", version: 1 })

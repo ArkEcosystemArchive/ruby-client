@@ -36,7 +36,7 @@ module ArkClient
         #
         # @return [Faraday::Response]
         def show(ip, port)
-          get('peers/get', {:ip => ip, :port => port})
+          get('peers/get', { ip: ip, port: port})
         end
 
         # Get the node version of the peer.
