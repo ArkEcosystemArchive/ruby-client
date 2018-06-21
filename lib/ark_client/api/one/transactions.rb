@@ -35,7 +35,7 @@ module ArkClient
         #
         # @return [Faraday::Response]
         def show(id)
-          get('transactions/get', {:id => id})
+          get('transactions/get', { id: id })
         end
 
         # Get all unconfirmed transactions.
@@ -53,7 +53,7 @@ module ArkClient
         #
         # @return [Faraday::Response]
         def show_unconfirmed(id)
-          get('transactions/unconfirmed/get', {:id => id})
+          get('transactions/unconfirmed/get', { id: id })
         end
       end
     end
