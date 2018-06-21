@@ -4,7 +4,7 @@ require 'ark_client/connection'
 # Ruby client for the Ark Core API
 module ArkClient
   class << self
-    # Short description of what this function does.
+    # Instantiates a new Client or returns the current one if exists
     #
     # @return [ArkClient::Client]
     def client
