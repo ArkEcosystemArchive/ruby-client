@@ -12,7 +12,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def get(url, query = {})
-          request :get, url, query
+          request(:get, url, query)
         end
 
         # Create and send a HTTP "POST" request.
@@ -22,7 +22,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def post(url, payload = {})
-          request :post, url, payload
+          request(:post, url, payload)
         end
 
         # Create and send a HTTP "PUT" request.
@@ -32,7 +32,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def put(url, payload = {})
-          request :put, url, payload
+          request(:put, url, payload)
         end
 
         # Create and send a HTTP "DELETE" request.
@@ -42,7 +42,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def delete(url, query = {})
-          request :delete, url, query
+          request(:delete, url, query)
         end
 
         private
@@ -55,7 +55,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def request(method, path, data)
-          http.send(method, path, data)
+          JSON.parse(http.send(method, path, data).body)
         end
 
         # Create a new Faraday instance.
