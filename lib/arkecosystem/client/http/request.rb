@@ -62,7 +62,7 @@ module ArkEcosystem
         #
         # @return [Faraday]
         def http
-          connection = Faraday.new "#{@host}/" do |conn|
+          connection = Faraday.new "#{@host}" do |conn|
             conn.headers['Content-Type'] = 'application/json'
 
             unless @version.nil?
