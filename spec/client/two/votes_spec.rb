@@ -1,26 +1,19 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Votes do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 2
-      }
-    ).votes
-  end
-
-  describe ".list" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.list
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/votes"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/votes")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".show" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.show
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/votes/dummy"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/votes/dummy")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

@@ -1,68 +1,67 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Wallets do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 2
-      }
-    ).wallets
-  end
-
-  describe ".list" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.list
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/wallets"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".top" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.top
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/wallets/dummy"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".show" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.show
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/wallets/dummy/transactions"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy/transactions")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".transactions" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.transactions
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/wallets/dummy/transactions/received"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy/transactions/received")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".sent_transactions" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.sent_transactions
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/wallets/dummy/transactions/sent"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy/transactions/sent")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".received_transaction" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.received_transaction
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/wallets/dummy/votes"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy/votes")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".votes" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.votes
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/wallets/top"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/top")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".search" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.search
-      expect(response.code).to be 200
+      resp = @client.post "#{@host}/v2/wallets/search"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/search")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

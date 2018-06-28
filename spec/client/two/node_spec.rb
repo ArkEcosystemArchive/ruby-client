@@ -1,33 +1,27 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Node do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 2
-      }
-    ).node
-  end
-
-  describe ".status" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.status
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/node/configuration"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/node/configuration")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".syncing" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.syncing
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/node/status"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/node/status")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".configuration" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.configuration
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/node/syncing"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/node/syncing")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

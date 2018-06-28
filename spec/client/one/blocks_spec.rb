@@ -1,89 +1,91 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::One::Blocks do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 1
-      }
-    ).blocks
-  end
-
-  describe ".list" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.list
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".show" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.show
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/get"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/get")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".epoch" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.epoch
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getEpoch"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getEpoch")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".height" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.height
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getFee"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getFee")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".nethash" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.nethash
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getFees"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getFees")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".fee" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.fee
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getHeight"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getHeight")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".fees" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.fees
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getMilestone"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getMilestone")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".milestone" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.milestone
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getNethash"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getNethash")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".reward" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.reward
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getReward"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getReward")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".supply" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.supply
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getStatus"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getStatus")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".status" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.status
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/blocks/getSupply"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getSupply")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

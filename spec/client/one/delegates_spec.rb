@@ -1,75 +1,75 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::One::Delegates do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 1
-      }
-    ).delegates
-  end
-
-  describe ".list" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.list
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".show" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.show
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates/count"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates/count")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".count" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.count
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates/fee"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates/fee")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".search" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.search
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates/forging/getForgedByAccount"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates/forging/getForgedByAccount")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".voters" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.voters
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates/forging/status"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates/forging/status")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".fee" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.fee
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates/get"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates/get")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".forged_by_account" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.forged_by_account
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates/getNextForgers"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates/getNextForgers")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".next_forgers" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.next_forgers
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates/search"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates/search")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".forging_status" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.forging_status
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/delegates/voters"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/delegates/voters")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

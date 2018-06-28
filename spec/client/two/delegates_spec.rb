@@ -1,40 +1,35 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Delegates do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 2
-      }
-    ).delegates
-  end
-
-  describe ".list" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.list
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/delegates"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/delegates")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".show" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.show
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/delegates/dummy"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/delegates/dummy")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".blocks" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.blocks
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/delegates/dummy/blocks"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/delegates/dummy/blocks")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".voters" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.voters
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/delegates/dummy/voters"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/delegates/dummy/voters")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

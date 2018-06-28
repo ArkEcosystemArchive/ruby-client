@@ -1,33 +1,27 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::One::Peers do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 1
-      }
-    ).peers
-  end
-
-  describe ".list" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.list
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/peers"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/peers")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".show" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.show
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/peers/get"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/peers/get")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".version" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.version
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/peers/version"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/peers/version")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

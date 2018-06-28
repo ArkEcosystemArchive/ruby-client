@@ -1,33 +1,27 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::One::Loader do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 1
-      }
-    ).loader
-  end
-
-  describe ".status" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.status
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/loader/autoconfigure"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/loader/autoconfigure")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".sync" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.sync
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/loader/status"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/loader/status")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".autoconfigure" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.autoconfigure
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/loader/status/sync"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/loader/status/sync")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

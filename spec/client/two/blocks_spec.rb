@@ -1,40 +1,35 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Blocks do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 2
-      }
-    ).blocks
-  end
-
-  describe ".list" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.list
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/blocks"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/blocks")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".show" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.show
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/blocks/dummy"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/blocks/dummy")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".transactions" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.transactions
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v2/blocks/dummy/transactions"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/blocks/dummy/transactions")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".search" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.search
-      expect(response.code).to be 200
+      resp = @client.post "#{@host}/v2/blocks/search"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/blocks/search")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end

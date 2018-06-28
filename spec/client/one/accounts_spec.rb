@@ -1,47 +1,43 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::One::Accounts do
-  before do
-    @client = ArkEcosystem::Client::Connection.new(
-      {
-        host: "https://dexplorer.ark.io:8443/api/",
-        version: 1
-      }
-    ).accounts
+  describe ".balance" do
+    it "should be ok" do
+      resp = @client.get "#{@host}/v1/accounts"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts")
+      expect(resp.body).to eq({ success: true })
+    end
   end
 
   describe ".balance" do
     it "should be ok" do
-      response = @client.balance
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/accounts/delegates"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/delegates")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".public_key" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.public_key
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/accounts/delegates/fee"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/delegates/fee")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".delegate" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.delegate
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/accounts/getBalance"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/getBalance")
+      expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".delegates_fee" do
+  describe ".balance" do
     it "should be ok" do
-      response = @client.delegates_fee
-      expect(response.code).to be 200
-    end
-  end
-
-  describe ".account" do
-    it "should be ok" do
-      response = @client.account
-      expect(response.code).to be 200
+      resp = @client.get "#{@host}/v1/accounts/getPublickey"
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/getPublickey")
+      expect(resp.body).to eq({ success: true })
     end
   end
 end
