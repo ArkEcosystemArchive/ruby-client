@@ -1,9 +1,6 @@
 require "bundler/setup"
 require "webmock/rspec"
-require "dotenv"
-require "ark_client"
-
-Dotenv.load('.env')
+require "arkecosystem/client"
 
 WebMock.allow_net_connect!
 

@@ -17,7 +17,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ark_client'
+gem 'arkecosystem-client'
 ```
 
 And then execute:
@@ -26,19 +26,19 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install ark_client
+    $ gem install arkecosystem-client
 
 ## Usage
 
 ```ruby
-require 'ark_client'
+require 'arkecosystem/client'
 
 client = ArkClient.client
 
-connection = ArkClient::Connection.new({ host: "https://main.host.io:4003/api/", version: 1 }, 'main')
+connection = ArkEcosystem::Client::Connection.new({ host: "https://main.host.io:4003/api/", version: 1 }, 'main')
 client.connect(connection)
 
-connection = ArkClient::Connection.new({ host: "https://back.host.io:4003/api/", version: 1 }, 'backup')
+connection = ArkEcosystem::Client::Connection.new({ host: "https://back.host.io:4003/api/", version: 1 }, 'backup')
 client.connect(connection)
 
 begin
