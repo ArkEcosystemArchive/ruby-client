@@ -5,7 +5,7 @@ module ArkEcosystem
     # Client for the Ark Core API
     #
     # @see https://docs.ark.io/v1.0/reference
-    class Client
+    class ConnectionManager
       # Create a new client instance.
       #
       # @return [Faraday::Response]
@@ -16,12 +16,12 @@ module ArkEcosystem
 
       # Connection to the given connection.
       #
-      # @param connection [ArkEcosystem::Client::Connection]
+      # @param connection [Hash]
       # @param name [String]
       #
       # @return [Faraday::Response]
       def connect(connection, name = 'main')
-        @connections[name] = connection
+        @connections[name] = Connection.new(connection)
       end
 
       # Disconnect from the given connection.
