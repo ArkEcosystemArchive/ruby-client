@@ -16,12 +16,12 @@ module ArkEcosystem
 
       # Connection to the given connection.
       #
-      # @param connection [Hash]
+      # @param connection [ArkEcosystem::Client::Connection]
       # @param name [String]
       #
       # @return [Faraday::Response]
       def connect(connection, name = 'main')
-        @connections[name] = Connection.new(connection)
+        @connections[name] = connection
       end
 
       # Disconnect from the given connection.
