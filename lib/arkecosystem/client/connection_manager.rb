@@ -2,7 +2,7 @@ require 'arkecosystem/client/connection'
 
 module ArkEcosystem
   module Client
-    # Client for the Ark Core API
+    # Manager that holds all connections
     #
     # @see https://docs.ark.io/v1.0/reference
     class ConnectionManager
