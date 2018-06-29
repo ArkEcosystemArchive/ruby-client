@@ -1,11 +1,15 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::One::Signatures do
+  before(:each) do
+    get_v1_connection
+  end
+
   describe ".fee" do
     it "should be ok" do
-      resp = @connectionOne.signatures.fee
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/signatures/fee")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.signatures.fee
+      expect(response.url).to eq("#{@host}/signatures/fee")
+      expect(response.body["success"]).to be_truthy
     end
   end
 end

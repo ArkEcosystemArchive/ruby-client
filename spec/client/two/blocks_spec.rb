@@ -1,35 +1,43 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Blocks do
+  before(:each) do
+    get_v2_connection
+  end
+
+  before(:each) do
+    get_v2_connection
+  end
+
   describe ".all" do
     it "should be ok" do
-      resp = @connectionTwo.blocks.all
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/blocks")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.all
+      expect(response.url).to eq("#{@host}/blocks")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".show" do
     it "should be ok" do
-      resp = @connectionTwo.blocks.show("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/blocks/dummy")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.show("dummy")
+      expect(response.url).to eq("#{@host}/blocks/dummy")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".transactions" do
     it "should be ok" do
-      resp = @connectionTwo.blocks.transactions("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/blocks/dummy/transactions")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.transactions("dummy")
+      expect(response.url).to eq("#{@host}/blocks/dummy/transactions")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".search" do
     it "should be ok" do
-      resp = @connectionTwo.blocks.search({ id: "dummy" })
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/blocks/search")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.search({ id: "dummy" })
+      expect(response.url).to eq("#{@host}/blocks/search")
+      expect(response.body["success"]).to be_truthy
     end
   end
 end

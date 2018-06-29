@@ -1,91 +1,95 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::One::Blocks do
+  before(:each) do
+    get_v1_connection
+  end
+
   describe ".all" do
     it "should be ok" do
-      resp = @connectionOne.blocks.all
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.all
+      expect(response.url).to eq("#{@host}/blocks")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".show" do
     it "should be ok" do
-      resp = @connectionOne.blocks.show "dummy"
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/get?id=dummy")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.show "dummy"
+      expect(response.url).to eq("#{@host}/blocks/get?id=dummy")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".epoch" do
     it "should be ok" do
-      resp = @connectionOne.blocks.epoch
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getEpoch")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.epoch
+      expect(response.url).to eq("#{@host}/blocks/getEpoch")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".height" do
     it "should be ok" do
-      resp = @connectionOne.blocks.height
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getHeight")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.height
+      expect(response.url).to eq("#{@host}/blocks/getHeight")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".nethash" do
     it "should be ok" do
-      resp = @connectionOne.blocks.nethash
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getNethash")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.nethash
+      expect(response.url).to eq("#{@host}/blocks/getNethash")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".fee" do
     it "should be ok" do
-      resp = @connectionOne.blocks.fee
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getFee")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.fee
+      expect(response.url).to eq("#{@host}/blocks/getFee")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".fees" do
     it "should be ok" do
-      resp = @connectionOne.blocks.fees
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getFees")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.fees
+      expect(response.url).to eq("#{@host}/blocks/getFees")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".milestone" do
     it "should be ok" do
-      resp = @connectionOne.blocks.milestone
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getMilestone")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.milestone
+      expect(response.url).to eq("#{@host}/blocks/getMilestone")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".reward" do
     it "should be ok" do
-      resp = @connectionOne.blocks.reward
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getReward")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.reward
+      expect(response.url).to eq("#{@host}/blocks/getReward")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".supply" do
     it "should be ok" do
-      resp = @connectionOne.blocks.supply
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getSupply")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.supply
+      expect(response.url).to eq("#{@host}/blocks/getSupply")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".status" do
     it "should be ok" do
-      resp = @connectionOne.blocks.status
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/blocks/getStatus")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.blocks.status
+      expect(response.url).to eq("#{@host}/blocks/getStatus")
+      expect(response.body["success"]).to be_truthy
     end
   end
 end

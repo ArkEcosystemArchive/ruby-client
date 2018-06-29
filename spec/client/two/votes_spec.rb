@@ -1,19 +1,23 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Votes do
+  before(:each) do
+    get_v2_connection
+  end
+
   describe ".all" do
     it "should be ok" do
-      resp = @connectionTwo.votes.all
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/votes")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.votes.all
+      expect(response.url).to eq("#{@host}/votes")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".show" do
     it "should be ok" do
-      resp = @connectionTwo.votes.show("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/votes/dummy")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.votes.show("dummy")
+      expect(response.url).to eq("#{@host}/votes/dummy")
+      expect(response.body["success"]).to be_truthy
     end
   end
 end

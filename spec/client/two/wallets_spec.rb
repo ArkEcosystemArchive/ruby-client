@@ -1,67 +1,71 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Wallets do
+  before(:each) do
+    get_v2_connection
+  end
+
   describe ".all" do
     it "should be ok" do
-      resp = @connectionTwo.wallets.all
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.wallets.all
+      expect(response.url).to eq("#{@host}/wallets")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".top" do
     it "should be ok" do
-      resp = @connectionTwo.wallets.top
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/top")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.wallets.top
+      expect(response.url).to eq("#{@host}/wallets/top")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".show" do
     it "should be ok" do
-      resp = @connectionTwo.wallets.show("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.wallets.show("dummy")
+      expect(response.url).to eq("#{@host}/wallets/dummy")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".transactions" do
     it "should be ok" do
-      resp = @connectionTwo.wallets.transactions("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy/transactions")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.wallets.transactions("dummy")
+      expect(response.url).to eq("#{@host}/wallets/dummy/transactions")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".sent_transactions" do
     it "should be ok" do
-      resp = @connectionTwo.wallets.sent_transactions("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy/transactions/sent")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.wallets.sent_transactions("dummy")
+      expect(response.url).to eq("#{@host}/wallets/dummy/transactions/sent")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".received_transaction" do
     it "should be ok" do
-      resp = @connectionTwo.wallets.received_transaction("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy/transactions/received")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.wallets.received_transaction("dummy")
+      expect(response.url).to eq("#{@host}/wallets/dummy/transactions/received")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".votes" do
     it "should be ok" do
-      resp = @connectionTwo.wallets.votes("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/dummy/votes")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.wallets.votes("dummy")
+      expect(response.url).to eq("#{@host}/wallets/dummy/votes")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".search" do
     it "should be ok" do
-      resp = @connectionTwo.wallets.search({ username: "dummy" })
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/wallets/search")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.wallets.search({ username: "dummy" })
+      expect(response.url).to eq("#{@host}/wallets/search")
+      expect(response.body["success"]).to be_truthy
     end
   end
 end

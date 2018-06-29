@@ -1,19 +1,23 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Peers do
+  before(:each) do
+    get_v2_connection
+  end
+
   describe ".all" do
     it "should be ok" do
-      resp = @connectionTwo.peers.all
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/peers")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.peers.all
+      expect(response.url).to eq("#{@host}/peers")
+      expect(response.body["success"]).to be_truthy
     end
   end
 
   describe ".show" do
     it "should be ok" do
-      resp = @connectionTwo.peers.show("dummy")
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/peers/dummy")
-      expect(resp.body).to eq({ success: true })
+      response = @connection.peers.show("dummy")
+      expect(response.url).to eq("#{@host}/peers/dummy")
+      expect(response.body["success"]).to be_truthy
     end
   end
 end
