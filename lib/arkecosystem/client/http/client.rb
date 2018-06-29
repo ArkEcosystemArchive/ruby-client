@@ -1,5 +1,5 @@
-require 'json'
 require 'faraday_middleware'
+require 'arkecosystem/client/http/response'
 
 module ArkEcosystem
   module Client
@@ -68,7 +68,9 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def send_request(method, path, data)
-          get_http_client.send(method, path, data)
+          response = get_http_client.send(method, path, data)
+
+          ArkEcosystem::Client::HTTP::Response.new(response)
         end
 
         # Create a new Faraday instance.
@@ -76,8 +78,12 @@ module ArkEcosystem
         # @return [Faraday]
         def get_http_client
           if @http_client.nil?
-            Faraday.new "#{@host}/v#{@version}" do |faraday|
+            Faraday.new "#{@host}" do |faraday|
               faraday.headers['Content-Type'] = 'application/json'
+
+              unless @version.nil?
+                faraday.headers['API-Version'] = "#{@version}"
+              end
 
               faraday.request :json
 
