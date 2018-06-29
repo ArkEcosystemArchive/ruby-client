@@ -13,6 +13,7 @@ module ArkEcosystem
         def initialize(config)
           @host = config[:host]
           @version = config[:version]
+          @adapter = Faraday.default_adapter
         end
 
         # Create and send a HTTP "GET" request.
@@ -22,7 +23,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def get(url, query = {})
-          request(:get, url, query)
+          send_request(:get, url, query)
         end
 
         # Create and send a HTTP "POST" request.
@@ -32,7 +33,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def post(url, payload = {})
-          request(:post, url, payload)
+          send_request(:post, url, payload)
         end
 
         # Create and send a HTTP "PUT" request.
@@ -42,7 +43,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def put(url, payload = {})
-          request(:put, url, payload)
+          send_request(:put, url, payload)
         end
 
         # Create and send a HTTP "DELETE" request.
@@ -52,7 +53,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def delete(url, query = {})
-          request(:delete, url, query)
+          send_request(:delete, url, query)
         end
 
         private
@@ -64,24 +65,24 @@ module ArkEcosystem
         # @param data [String]
         #
         # @return [Faraday::Response]
-        def request(method, path, data)
-          JSON.parse(get_client.send(method, path, data).body)
+        def send_request(method, path, data)
+          JSON.parse(get_http_client.send(method, path, data).body)
         end
 
         # Create a new Faraday instance.
         #
         # @return [Faraday]
-        def get_client
-          connection = Faraday.new "#{@host}" do |conn|
-            conn.headers['Content-Type'] = 'application/json'
+        def get_http_client
+          Faraday.new "#{@host}" do |faraday|
+            faraday.headers['Content-Type'] = 'application/json'
 
             unless @version.nil?
-              conn.headers['API-Version'] = "#{@version}"
+              faraday.headers['API-Version'] = "#{@version}"
             end
 
-            conn.request :json
+            faraday.request :json
 
-            conn.adapter Faraday.default_adapter
+            faraday.adapter @adapter
           end
         end
       end

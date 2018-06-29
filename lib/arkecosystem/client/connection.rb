@@ -22,14 +22,18 @@ module ArkEcosystem
       # @param config [Hash]
       #
       # @return [ArkEcosystem::Client::Connection]
-      def initialize(config)
+      def initialize(config, client = nil)
         @host = config[:host]
         @version = config[:version]
 
         raise ArgumentError, 'No API host is provided.' if @host.nil?
         raise ArgumentError, 'No API version is provided.' if @version.nil?
 
-        @client = ArkEcosystem::Client::HTTP::Client.new(config)
+        if client.nil?
+          @client = ArkEcosystem::Client::HTTP::Client.new(config)
+        else
+          @client = client.new(config)
+        end
       end
 
       # Return the Accounts API resource.
