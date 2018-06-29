@@ -69,7 +69,7 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def send_request(method, path, data)
-          response = get_http_client.send(method, path, data)
+          response = faraday.send(method, path, data)
 
           ArkEcosystem::Client::HTTP::Response.new(response)
         end
@@ -77,7 +77,7 @@ module ArkEcosystem
         # Create a new Faraday instance.
         #
         # @return [Faraday]
-        def get_http_client
+        def faraday # rubocop:disable Metrics/MethodLength
           if @http_client.nil?
             Faraday.new @host.to_s do |faraday|
               faraday.headers['Content-Type'] = 'application/json'

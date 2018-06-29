@@ -32,10 +32,10 @@ module ArkEcosystem
         raise ArgumentError, 'No API host is provided.' if @host.nil?
         raise ArgumentError, 'No API version is provided.' if @version.nil?
 
-        @client = if client.nil?
-                    ArkEcosystem::Client::HTTP::Client.new(config)
-                  else
-                    client.new(config)
+        if client.nil? # rubocop:disable Style/ConditionalAssignment
+          @client = ArkEcosystem::Client::HTTP::Client.new(config)
+        else
+          @client = client.new(config)
         end
       end
 
@@ -123,7 +123,7 @@ module ArkEcosystem
       def signatures
         case @version
         when 1
-          @signatures ||= ArkEcosystem::Client::API::One::Signatures.new(@client)
+          @signatures ||= ArkEcosystem::Client::API::One::Signatures.new(@client) # rubocop:disable Metrics/LineLength
         else
           raise NotImplementedError
         end
@@ -135,9 +135,9 @@ module ArkEcosystem
       def transactions
         case @version
         when 1
-          @transactions ||= ArkEcosystem::Client::API::One::Transactions.new(@client)
+          @transactions ||= ArkEcosystem::Client::API::One::Transactions.new(@client) # rubocop:disable Metrics/LineLength
         when 2
-          @transactions ||= ArkEcosystem::Client::API::Two::Transactions.new(@client)
+          @transactions ||= ArkEcosystem::Client::API::Two::Transactions.new(@client) # rubocop:disable Metrics/LineLength
         else
           raise NotImplementedError
         end

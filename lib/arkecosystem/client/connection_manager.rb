@@ -6,6 +6,8 @@ module ArkEcosystem
     #
     # @see https://docs.ark.io/v1.0/reference
     class ConnectionManager
+      attr_accessor :default, :connections
+
       # Create a new client instance.
       #
       # @return [Faraday::Response]
@@ -40,29 +42,6 @@ module ArkEcosystem
       # @return [ArkEcosystem::Client::Connection]
       def connection(name)
         @connections[name]
-      end
-
-      # Get the default connection name.
-      #
-      # @return [String]
-      def get_default_connection
-        @default
-      end
-
-      # Set the default connection name.
-      #
-      # @param name [String]
-      #
-      # @return [nil]
-      def set_default_connection(name)
-        @default = name
-      end
-
-      # Return all of the created connections.
-      #
-      # @return [Faraday::Response]
-      def get_connections
-        @connections
       end
     end
   end
