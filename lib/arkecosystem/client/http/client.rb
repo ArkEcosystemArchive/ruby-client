@@ -4,7 +4,17 @@ require 'faraday_middleware'
 module ArkEcosystem
   module Client
     module HTTP
-      module Request
+      class Client
+        # Create a new resource instance.
+        #
+        # @param config [Hash]
+        #
+        # @return [ArkEcosystem::Client::API::Two::Wallets]
+        def initialize(config)
+          @host = config[:host]
+          @version = config[:version]
+        end
+
         # Create and send a HTTP "GET" request.
         #
         # @param url [String]
@@ -55,13 +65,13 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def request(method, path, data)
-          JSON.parse(http.send(method, path, data).body)
+          JSON.parse(get_client.send(method, path, data).body)
         end
 
         # Create a new Faraday instance.
         #
         # @return [Faraday]
-        def http
+        def get_client
           connection = Faraday.new "#{@host}" do |conn|
             conn.headers['Content-Type'] = 'application/json'
 

@@ -1,33 +1,21 @@
-require 'arkecosystem/client/http/request'
+require 'arkecosystem/client/api/base'
 
 module ArkEcosystem
   module Client
-    class API
+    module API
       # Methods for Version 1 of the API
       #
       # @see https://docs.ark.io/v1.0/reference#api-v1-delegates
       module One
         # Methods for the Delegates API
-        class Delegates
-          include ArkEcosystem::Client::HTTP::Request
-
-          # Create a new resource instance.
-          #
-          # @param host [String]
-          #
-          # @return [ArkEcosystem::Client::API::One::Delegates]
-          def initialize(host)
-            @host = host
-            @version = 1
-          end
-
+        class Delegates < Base
           # Get all delegates.
           #
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
           def list(parameters = {})
-            get('delegates', parameters)
+            @client.get('delegates', parameters)
           end
 
           # Get the delegate by the given id.
@@ -36,14 +24,14 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show(parameters = {})
-            get('delegates/get', parameters)
+            @client.get('delegates/get', parameters)
           end
 
           # Count all delegates.
           #
           # @return [Faraday::Response]
           def count
-            get('delegates/count')
+            @client.get('delegates/count')
           end
 
           # Search all delegates.
@@ -53,7 +41,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def search(q, parameters = {})
-            get('delegates/search', {q: q}.merge(parameters))
+            @client.get('delegates/search', {q: q}.merge(parameters))
           end
 
           # Get the voters for the given delegate.
@@ -63,7 +51,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def voters(public_key, parameters = {})
-            get('delegates/voters', {publicKey: public_key}.merge(parameters))
+            @client.get('delegates/voters', {publicKey: public_key}.merge(parameters))
           end
 
           # Get the delegate registration fee.
@@ -72,7 +60,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def fee
-            get('delegates/fee')
+            @client.get('delegates/fee')
           end
 
           # Get the total forged for the given delegate.
@@ -81,7 +69,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def forged_by_account(generator_public_key)
-            get('delegates/forging/getForgedByAccount', {generatorPublicKey: generator_public_key})
+            @client.get('delegates/forging/getForgedByAccount', {generatorPublicKey: generator_public_key})
           end
 
           # Get a list of the next forgers.
@@ -90,7 +78,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def next_forgers
-            get('delegates/getNextForgers')
+            @client.get('delegates/getNextForgers')
           end
 
           # Get the forging status for the given delegate.
@@ -100,7 +88,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def forging_status(public_key, parameters = {})
-            get('delegates/forging/status', {:publicKey => public_key}.merge(parameters))
+            @client.get('delegates/forging/status', {:publicKey => public_key}.merge(parameters))
           end
         end
       end

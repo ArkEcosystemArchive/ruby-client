@@ -1,33 +1,21 @@
-require 'arkecosystem/client/http/request'
+require 'arkecosystem/client/api/base'
 
 module ArkEcosystem
   module Client
-    class API
+    module API
       # Methods for Version 2 of the API
       #
       # @see https://docs.ark.io/v1.0/reference#api-v2-delegates
       module Two
         # Methods for the Delegates API
-        class Delegates
-          include ArkEcosystem::Client::HTTP::Request
-
-          # Create a new resource instance.
-          #
-          # @param host [String]
-          #
-          # @return [ArkEcosystem::Client::API::Two::Delegates]
-          def initialize(host)
-            @host = host
-            @version = 2
-          end
-
+        class Delegates < Base
           # Get all delegates.
           #
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
           def list(parameters = {})
-            get("delegates", parameters)
+            @client.get("delegates", parameters)
           end
 
           # Get the delegate by the given id.
@@ -36,7 +24,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show(id)
-            get("delegates/#{id}")
+            @client.get("delegates/#{id}")
           end
 
           # Get the blocks for the given delegate.
@@ -46,7 +34,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def blocks(id, parameters = {})
-            get("delegates/#{id}/blocks", parameters)
+            @client.get("delegates/#{id}/blocks", parameters)
           end
 
           # Get the votes for the given delegate.
@@ -56,7 +44,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def voters(id, parameters = {})
-            get("delegates/#{id}/voters", parameters)
+            @client.get("delegates/#{id}/voters", parameters)
           end
         end
       end

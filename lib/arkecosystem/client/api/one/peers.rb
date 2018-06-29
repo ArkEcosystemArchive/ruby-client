@@ -1,33 +1,21 @@
-require 'arkecosystem/client/http/request'
+require 'arkecosystem/client/api/base'
 
 module ArkEcosystem
   module Client
-    class API
+    module API
       # Methods for Version 1 of the API
       #
       # @see https://docs.ark.io/v1.0/reference#api-v1-peers
       module One
         # Methods for the Peers API
-        class Peers
-          include ArkEcosystem::Client::HTTP::Request
-
-          # Create a new resource instance.
-          #
-          # @param host [String]
-          #
-          # @return [ArkEcosystem::Client::Client::Peers::Accounts]
-          def initialize(host)
-            @host = host
-            @version = 1
-          end
-
+        class Peers < Base
           # Get all peers.
           #
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
           def list(parameters = {})
-            get('peers', parameters)
+            @client.get('peers', parameters)
           end
 
           # Get the peer by the given ip and port.
@@ -37,14 +25,14 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show(ip, port)
-            get('peers/get', {:ip => ip, :port => port})
+            @client.get('peers/get', {:ip => ip, :port => port})
           end
 
           # Get the node version of the peer.
           #
           # @return [Faraday::Response]
           def version
-            get('peers/version')
+            @client.get('peers/version')
           end
         end
       end

@@ -1,33 +1,21 @@
-require 'arkecosystem/client/http/request'
+require 'arkecosystem/client/api/base'
 
 module ArkEcosystem
   module Client
-    class API
+    module API
       # Methods for Version 1 of the API
       #
       # @see https://docs.ark.io/v1.0/reference#api-v1-transactions
       module One
         # Methods for the Transactions API
-        class Transactions
-          include ArkEcosystem::Client::HTTP::Request
-
-          # Create a new resource instance.
-          #
-          # @param host [String]
-          #
-          # @return [ArkEcosystem::Client::API::One::Transactions]
-          def initialize(host)
-            @host = host
-            @version = 1
-          end
-
+        class Transactions < Base
           # Get all transactions.
           #
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
           def list(parameters = {})
-            get('transactions', parameters)
+            @client.get('transactions', parameters)
           end
 
           # Get the transaction by the given id.
@@ -36,7 +24,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show(id)
-            get('transactions/get', {:id => id})
+            @client.get('transactions/get', {:id => id})
           end
 
           # Get all unconfirmed transactions.
@@ -45,7 +33,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def list_unconfirmed(parameters = {})
-            get('transactions/unconfirmed', parameters)
+            @client.get('transactions/unconfirmed', parameters)
           end
 
           # Get the unconfirmed transaction by the given id.
@@ -54,7 +42,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show_unconfirmed(id)
-            get('transactions/unconfirmed/get', {:id => id})
+            @client.get('transactions/unconfirmed/get', {:id => id})
           end
         end
       end
