@@ -87,7 +87,27 @@ RSpec.configure do |config|
       stub.post("#{@host}/v2/wallets/search") { |env| [200, {}, { success: true }] }
     end
 
-    @client = Faraday.new "#{@host}" do |builder|
+    # Version 1
+    @connectionOne = ArkEcosystem::Client::Connection.new(
+      {
+        host: "https://dexplorer.ark.io:8443/api/",
+        version: 1
+      }
+    )
+
+    @connectionOne.client.http_client = Faraday.new "#{@host}/v1" do |builder|
+      builder.adapter :test, stubs
+    end
+
+    # Version 2
+    @connectionTwo = ArkEcosystem::Client::Connection.new(
+      {
+        host: "https://dexplorer.ark.io:8443/api/",
+        version: 2
+      }
+    )
+
+    @connectionTwo.client.http_client = Faraday.new "#{@host}/v2" do |builder|
       builder.adapter :test, stubs
     end
   end

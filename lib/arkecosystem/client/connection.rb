@@ -17,6 +17,8 @@ require 'arkecosystem/client/api/two/wallets'
 module ArkEcosystem
   module Client
     class Connection
+      attr_accessor :client
+
       # Create a new connection instance.
       #
       # @param config [Hash]

@@ -14,7 +14,7 @@ module ArkEcosystem
           # @param parameters [String]
           #
           # @return [Faraday::Response]
-          def list(parameters = {})
+          def all(parameters = {})
             @client.get("blocks", parameters)
           end
 

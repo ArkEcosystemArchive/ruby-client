@@ -14,7 +14,7 @@ module ArkEcosystem
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
-          def list(parameters = {})
+          def all(parameters = {})
             @client.get('blocks', parameters)
           end
 
@@ -24,7 +24,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show(id)
-            @client.get('blocks/get', {:id => id})
+            @client.get('blocks/get', { id: id })
           end
 
           # Get the blockchain epoch.

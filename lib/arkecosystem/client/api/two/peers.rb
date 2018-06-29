@@ -14,7 +14,7 @@ module ArkEcosystem
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
-          def list(parameters = {})
+          def all(parameters = {})
             @client.get("peers", parameters)
           end
 

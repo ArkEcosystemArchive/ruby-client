@@ -3,40 +3,40 @@ require "spec_helper"
 describe ArkEcosystem::Client::API::One::Accounts do
   describe ".balance" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v1/accounts"
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts")
+      resp = @connectionOne.accounts.balance("dummy")
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/getBalance?address=dummy")
       expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".balance" do
+  describe ".public_key" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v1/accounts/delegates"
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/delegates")
+      resp = @connectionOne.accounts.public_key("dummy")
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/getPublickey?address=dummy")
       expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".balance" do
+  describe ".delegate" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v1/accounts/delegates/fee"
+      resp = @connectionOne.accounts.delegate("dummy")
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/delegates?address=dummy")
+      expect(resp.body).to eq({ success: true })
+    end
+  end
+
+  describe ".delegates_fee" do
+    it "should be ok" do
+      resp = @connectionOne.accounts.delegates_fee
       expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/delegates/fee")
       expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".balance" do
+  describe ".account" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v1/accounts/getBalance"
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/getBalance")
-      expect(resp.body).to eq({ success: true })
-    end
-  end
-
-  describe ".balance" do
-    it "should be ok" do
-      resp = @client.get "#{@host}/v1/accounts/getPublickey"
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts/getPublickey")
+      resp = @connectionOne.accounts.account("dummy")
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/accounts?address=dummy")
       expect(resp.body).to eq({ success: true })
     end
   end

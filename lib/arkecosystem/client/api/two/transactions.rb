@@ -14,7 +14,7 @@ module ArkEcosystem
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
-          def list(parameters = {})
+          def all(parameters = {})
             @client.get("transactions", parameters)
           end
 
@@ -41,7 +41,7 @@ module ArkEcosystem
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
-          def list_unconfirmed(parameters = {})
+          def all_unconfirmed(parameters = {})
             @client.get("transactions/unconfirmed", parameters)
           end
 
@@ -50,7 +50,7 @@ module ArkEcosystem
           # @param id [String]
           #
           # @return [Faraday::Response]
-          def get_unconfirmed(id)
+          def show_unconfirmed(id)
             @client.get("transactions/unconfirmed/#{id}")
           end
 

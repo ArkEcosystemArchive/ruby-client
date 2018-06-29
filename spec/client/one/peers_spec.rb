@@ -1,25 +1,25 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::One::Peers do
-  describe ".balance" do
+  describe ".all" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v1/peers"
+      resp = @connectionOne.peers.all
       expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/peers")
       expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".balance" do
+  describe ".show" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v1/peers/get"
-      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/peers/get")
+      resp = @connectionOne.peers.show("ip", "port")
+      expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/peers/get?ip=ip&port=port")
       expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".balance" do
+  describe ".version" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v1/peers/version"
+      resp = @connectionOne.peers.version
       expect(resp.to_hash[:url].to_s).to eq("#{@host}/v1/peers/version")
       expect(resp.body).to eq({ success: true })
     end

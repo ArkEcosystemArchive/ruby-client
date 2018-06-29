@@ -5,6 +5,8 @@ module ArkEcosystem
   module Client
     module HTTP
       class Client
+        attr_accessor :http_client
+
         # Create a new resource instance.
         #
         # @param config [Hash]
@@ -13,7 +15,7 @@ module ArkEcosystem
         def initialize(config)
           @host = config[:host]
           @version = config[:version]
-          @adapter = Faraday.default_adapter
+          @http_client = nil
         end
 
         # Create and send a HTTP "GET" request.
@@ -66,23 +68,23 @@ module ArkEcosystem
         #
         # @return [Faraday::Response]
         def send_request(method, path, data)
-          JSON.parse(get_http_client.send(method, path, data).body)
+          get_http_client.send(method, path, data)
         end
 
         # Create a new Faraday instance.
         #
         # @return [Faraday]
         def get_http_client
-          Faraday.new "#{@host}" do |faraday|
-            faraday.headers['Content-Type'] = 'application/json'
+          if @http_client.nil?
+            Faraday.new "#{@host}/v#{@version}" do |faraday|
+              faraday.headers['Content-Type'] = 'application/json'
 
-            unless @version.nil?
-              faraday.headers['API-Version'] = "#{@version}"
+              faraday.request :json
+
+              faraday.adapter Faraday.default_adapter
             end
-
-            faraday.request :json
-
-            faraday.adapter @adapter
+          else
+            @http_client
           end
         end
       end

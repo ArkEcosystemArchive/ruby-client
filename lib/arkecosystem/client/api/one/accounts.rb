@@ -38,11 +38,9 @@ module ArkEcosystem
 
           # Get the delegate registration fee.
           #
-          # @param address [String]
-          #
           # @return [Faraday::Response]
-          def delegates_fee(address)
-            @client.get('accounts/delegates/fee', { address: address })
+          def delegates_fee
+            @client.get('accounts/delegates/fee')
           end
 
           # Get the account by the given address.

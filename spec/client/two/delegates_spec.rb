@@ -1,33 +1,33 @@
 require "spec_helper"
 
 describe ArkEcosystem::Client::API::Two::Delegates do
-  describe ".balance" do
+  describe ".all" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v2/delegates"
+      resp = @connectionTwo.delegates.all
       expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/delegates")
       expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".balance" do
+  describe ".show" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v2/delegates/dummy"
+      resp = @connectionTwo.delegates.show("dummy")
       expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/delegates/dummy")
       expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".balance" do
+  describe ".blocks" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v2/delegates/dummy/blocks"
+      resp = @connectionTwo.delegates.blocks("dummy")
       expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/delegates/dummy/blocks")
       expect(resp.body).to eq({ success: true })
     end
   end
 
-  describe ".balance" do
+  describe ".voters" do
     it "should be ok" do
-      resp = @client.get "#{@host}/v2/delegates/dummy/voters"
+      resp = @connectionTwo.delegates.voters("dummy")
       expect(resp.to_hash[:url].to_s).to eq("#{@host}/v2/delegates/dummy/voters")
       expect(resp.body).to eq({ success: true })
     end

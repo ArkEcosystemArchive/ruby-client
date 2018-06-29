@@ -14,7 +14,7 @@ module ArkEcosystem
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
-          def list(parameters = {})
+          def all(parameters = {})
             @client.get('peers', parameters)
           end
 
@@ -25,7 +25,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show(ip, port)
-            @client.get('peers/get', {:ip => ip, :port => port})
+            @client.get('peers/get', { ip: ip, port: port })
           end
 
           # Get the node version of the peer.
