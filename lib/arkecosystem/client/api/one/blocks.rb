@@ -24,7 +24,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show(id)
-            @client.get('blocks/get', { id: id })
+            @client.get('blocks/get', id: id)
           end
 
           # Get the blockchain epoch.

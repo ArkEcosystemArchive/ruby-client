@@ -15,7 +15,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def all(parameters = {})
-            @client.get("blocks", parameters)
+            @client.get('blocks', parameters)
           end
 
           # Get the block by the given id.
@@ -43,7 +43,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def search(parameters)
-            @client.post("blocks/search", parameters)
+            @client.post('blocks/search', parameters)
           end
         end
       end

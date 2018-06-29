@@ -45,7 +45,7 @@ module ArkEcosystem
       # Get the default connection name.
       #
       # @return [String]
-      def get_default_connection()
+      def get_default_connection
         @default
       end
 

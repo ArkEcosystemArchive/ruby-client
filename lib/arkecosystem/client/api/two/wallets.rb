@@ -15,7 +15,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def all(parameters = {})
-            @client.get("wallets", parameters)
+            @client.get('wallets', parameters)
           end
 
           # Get all wallets sorted by balance.
@@ -24,7 +24,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def top(parameters = {})
-            @client.get("wallets/top", parameters)
+            @client.get('wallets/top', parameters)
           end
 
           # Get the wallet by the given id.
@@ -81,7 +81,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def search(parameters)
-            @client.post("wallets/search", parameters)
+            @client.post('wallets/search', parameters)
           end
         end
       end

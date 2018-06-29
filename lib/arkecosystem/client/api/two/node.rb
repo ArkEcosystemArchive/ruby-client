@@ -13,21 +13,21 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def status
-            @client.get("node/status")
+            @client.get('node/status')
           end
 
           # Get the loader syncing status.
           #
           # @return [Faraday::Response]
           def syncing
-            @client.get("node/syncing")
+            @client.get('node/syncing')
           end
 
           # Get the loader configuration.
           #
           # @return [Faraday::Response]
           def configuration
-            @client.get("node/configuration")
+            @client.get('node/configuration')
           end
         end
       end

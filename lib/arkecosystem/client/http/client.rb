@@ -4,6 +4,7 @@ require 'arkecosystem/client/http/response'
 module ArkEcosystem
   module Client
     module HTTP
+      # The HTTP client used for sending requests.
       class Client
         attr_accessor :http_client
 
@@ -78,11 +79,11 @@ module ArkEcosystem
         # @return [Faraday]
         def get_http_client
           if @http_client.nil?
-            Faraday.new "#{@host}" do |faraday|
+            Faraday.new @host.to_s do |faraday|
               faraday.headers['Content-Type'] = 'application/json'
 
               unless @version.nil?
-                faraday.headers['API-Version'] = "#{@version}"
+                faraday.headers['API-Version'] = @version.to_s
               end
 
               faraday.request :json

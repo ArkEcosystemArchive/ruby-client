@@ -15,7 +15,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def all(parameters = {})
-            @client.get("transactions", parameters)
+            @client.get('transactions', parameters)
           end
 
           # Create new transactions.
@@ -24,7 +24,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def create(parameters)
-            @client.post("transactions", parameters)
+            @client.post('transactions', parameters)
           end
 
           # Get the transaction by the given id.
@@ -42,7 +42,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def all_unconfirmed(parameters = {})
-            @client.get("transactions/unconfirmed", parameters)
+            @client.get('transactions/unconfirmed', parameters)
           end
 
           # Get the unconfirmed transaction by the given id.
@@ -60,14 +60,14 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def search(parameters)
-            @client.post("transactions/search", parameters)
+            @client.post('transactions/search', parameters)
           end
 
           # Get a list of all transaction types.
           #
           # @return [Faraday::Response]
           def types
-            @client.get("transactions/types")
+            @client.get('transactions/types')
           end
         end
       end

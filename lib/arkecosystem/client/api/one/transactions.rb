@@ -24,7 +24,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show(id)
-            @client.get('transactions/get', { id: id })
+            @client.get('transactions/get', id: id)
           end
 
           # Get all unconfirmed transactions.
@@ -42,7 +42,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def show_unconfirmed(id)
-            @client.get('transactions/unconfirmed/get', { id: id })
+            @client.get('transactions/unconfirmed/get', id: id)
           end
         end
       end

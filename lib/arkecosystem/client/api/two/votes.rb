@@ -15,7 +15,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def all(parameters = {})
-            @client.get("votes", parameters)
+            @client.get('votes', parameters)
           end
 
           # Get the vote by the given id.

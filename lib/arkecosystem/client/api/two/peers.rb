@@ -15,16 +15,16 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def all(parameters = {})
-            @client.get("peers", parameters)
+            @client.get('peers', parameters)
           end
 
           # Get the peer by the given ip.
           #
-          # @param ip [String]
+          # @param ip_addr [String]
           #
           # @return [Faraday::Response]
-          def show(ip)
-            @client.get("peers/#{ip}")
+          def show(ip_addr)
+            @client.get("peers/#{ip_addr}")
           end
         end
       end

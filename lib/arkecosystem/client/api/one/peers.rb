@@ -20,12 +20,12 @@ module ArkEcosystem
 
           # Get the peer by the given ip and port.
           #
-          # @param ip [String]
+          # @param ip_addr [String]
           # @param port [Integer]
           #
           # @return [Faraday::Response]
-          def show(ip, port)
-            @client.get('peers/get', { ip: ip, port: port })
+          def show(ip_addr, port)
+            @client.get('peers/get', ip: ip_addr, port: port)
           end
 
           # Get the node version of the peer.

@@ -15,7 +15,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def all(parameters = {})
-            @client.get("delegates", parameters)
+            @client.get('delegates', parameters)
           end
 
           # Get the delegate by the given id.

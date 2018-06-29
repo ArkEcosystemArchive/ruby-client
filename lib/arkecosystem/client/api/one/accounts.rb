@@ -15,7 +15,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def balance(address)
-            @client.get('accounts/getBalance', { address: address })
+            @client.get('accounts/getBalance', address: address)
           end
 
           # Get the public key for the given address.
@@ -24,7 +24,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def public_key(address)
-            @client.get('accounts/getPublickey', { address: address })
+            @client.get('accounts/getPublickey', address: address)
           end
 
           # Get the delegate by the given address.
@@ -33,7 +33,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def delegate(address)
-            @client.get('accounts/delegates', { address: address })
+            @client.get('accounts/delegates', address: address)
           end
 
           # Get the delegate registration fee.
@@ -49,7 +49,7 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def account(address)
-            @client.get('accounts', { address: address })
+            @client.get('accounts', address: address)
           end
         end
       end

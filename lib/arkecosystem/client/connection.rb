@@ -16,6 +16,7 @@ require 'arkecosystem/client/api/two/wallets'
 
 module ArkEcosystem
   module Client
+    # The connection used to communicate with the API.
     class Connection
       attr_accessor :client
 
@@ -31,10 +32,10 @@ module ArkEcosystem
         raise ArgumentError, 'No API host is provided.' if @host.nil?
         raise ArgumentError, 'No API version is provided.' if @version.nil?
 
-        if client.nil?
-          @client = ArkEcosystem::Client::HTTP::Client.new(config)
-        else
-          @client = client.new(config)
+        @client = if client.nil?
+                    ArkEcosystem::Client::HTTP::Client.new(config)
+                  else
+                    client.new(config)
         end
       end
 

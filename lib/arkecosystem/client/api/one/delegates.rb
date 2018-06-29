@@ -36,12 +36,12 @@ module ArkEcosystem
 
           # Search all delegates.
           #
-          # @param q [String]
+          # @param query [String]
           # @param parameters [Hash]
           #
           # @return [Faraday::Response]
-          def search(q, parameters = {})
-            @client.get('delegates/search', { q: q }.merge(parameters))
+          def search(query, parameters = {})
+            @client.get('delegates/search', { q: query }.merge(parameters))
           end
 
           # Get the voters for the given delegate.
@@ -51,7 +51,9 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def voters(public_key, parameters = {})
-            @client.get('delegates/voters', { publicKey: public_key }.merge(parameters))
+            mandatory = { publicKey: public_key }
+
+            @client.get('delegates/voters', mandatory.merge(parameters))
           end
 
           # Get the delegate registration fee.
@@ -69,7 +71,8 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def forged_by_account(generator_public_key)
-            @client.get('delegates/forging/getForgedByAccount', { generatorPublicKey: generator_public_key })
+            parameters = { generatorPublicKey: generator_public_key }
+            @client.get('delegates/forging/getForgedByAccount', parameters)
           end
 
           # Get a list of the next forgers.
@@ -88,7 +91,9 @@ module ArkEcosystem
           #
           # @return [Faraday::Response]
           def forging_status(public_key, parameters = {})
-            @client.get('delegates/forging/status', { publicKey: public_key }.merge(parameters))
+            mandatory = { publicKey: public_key }
+
+            @client.get('delegates/forging/status', mandatory.merge(parameters))
           end
         end
       end
