@@ -28,35 +28,9 @@ Or install it yourself as:
 
     $ gem install arkecosystem-client
 
-## Usage
+## Documentation
 
-```ruby
-require 'arkecosystem/client'
-
-client = ArkClient.client
-
-connection = ArkEcosystem::Client::Connection.new({ host: "https://main.host.io:4003/api/", version: 1 }, 'main')
-client.connect(connection)
-
-connection = ArkEcosystem::Client::Connection.new({ host: "https://back.host.io:4003/api/", version: 1 }, 'backup')
-client.connect(connection)
-
-begin
-    response = JSON.parse client
-      .connection('main')
-      .accounts.balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')
-      .body
-
-    print response['balance']
-rescue
-    response = JSON.parse client
-      .connection('back')
-      .accounts.balance('DARiJqhogp2Lu6bxufUFQQMuMyZbxjCydN')
-      .body
-
-    print response['balance']
-end
-```
+Have a look at the [official documentation](https://docs.ark.io/v1.0/docs/clients-ruby) for advanced examples and features.
 
 ## Development
 
