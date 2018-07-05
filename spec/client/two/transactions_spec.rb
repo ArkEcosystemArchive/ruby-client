@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe ArkEcosystem::Client::API::Two::Transactions do
   before(:each) do
     get_v2_connection

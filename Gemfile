@@ -8,3 +8,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'rubocop', '~> 0.56.0', require: false
 end
+
+group :development, :test do
+  gem 'byebug', require: false
+end
