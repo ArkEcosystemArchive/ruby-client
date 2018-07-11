@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe ArkEcosystem::Client::API::One::Delegates do
   before(:each) do
     get_v1_connection
