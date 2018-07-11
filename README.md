@@ -1,20 +1,42 @@
-# ARK Ruby - Client
+# Ark Ruby - Client
 
 <p align="center">
-    <img src="https://github.com/ArkEcosystem/ARK-Ruby-Client/blob/master/banner.png" />
+    <img src="https://github.com/ArkEcosystem/ruby-client/blob/master/banner.png" />
 </p>
 
-> A simple Ruby API client for the ARK Blockchain.
+> A simple Ruby API client for the Ark Blockchain.
 
-[![Build Status](https://img.shields.io/travis/ArkEcosystem/ARK-Ruby-Client/master.svg?style=flat-square)](https://travis-ci.org/ArkEcosystem/ARK-Ruby-Client)
-[![Latest Version](https://img.shields.io/github/release/ArkEcosystem/ARK-Ruby-Client.svg?style=flat-square)](https://github.com/ArkEcosystem/ARK-Ruby-Client/releases)
+[![Build Status](https://img.shields.io/travis/ArkEcosystem/ruby-client/master.svg?style=flat-square)](https://travis-ci.org/ArkEcosystem/ruby-client)
+[![Latest Version](https://img.shields.io/github/release/ArkEcosystem/ruby-client.svg?style=flat-square)](https://github.com/ArkEcosystem/ruby-client/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Installation
+# Installation
 
-```bash
-...
+## Bundler
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'arkecosystem-client'
 ```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install arkecosystem-client
+
+## Documentation
+
+Have a look at the [official documentation](https://docs.ark.io/v1.0/docs/clients-ruby) for advanced examples and features.
+
+## Development
+
+After checking out the repo, run `bin/setup` to install dependencies. Then, copy and edit the contents of the `.env.example` file into a file called `.env`. This file represents your network and account details. You can then run the tests using `rake spec`. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Security
 
