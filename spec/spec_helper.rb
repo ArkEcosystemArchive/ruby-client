@@ -1,6 +1,11 @@
-require 'bundler/setup'
-require 'webmock/rspec'
 require 'arkecosystem/client'
+require 'bundler/setup'
+require 'codecov'
+require 'simplecov'
+require 'webmock/rspec'
+
+SimpleCov.start
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 WebMock.allow_net_connect!
 
