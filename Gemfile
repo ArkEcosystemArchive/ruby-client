@@ -10,6 +10,10 @@ group :development do
 end
 
 group :development, :test do
-  gem 'codecov', :require => false
   gem 'byebug', require: false
+end
+
+group :test do
+  gem 'codecov', :require => false
+  gem 'simplecov', :require => false
 end
