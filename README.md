@@ -6,7 +6,7 @@
 
 > A simple Ruby API client for the Ark Blockchain.
 
-[![Build Status](https://badgen.now.sh/travis/ArkEcosystem/ruby-client)](https://travis-ci.org/ArkEcosystem/ruby-client)
+[![Build Status](https://badgen.now.sh/circleci/github/ArkEcosystem/ruby-client)](https://circleci.com/gh/ArkEcosystem/ruby-client)
 [![Codecov](https://badgen.now.sh/codecov/c/github/arkecosystem/ruby-client)](https://codecov.io/gh/arkecosystem/ruby-client)
 [![Latest Version](https://badgen.now.sh/github/release/ArkEcosystem/ruby-client)](https://github.com/ArkEcosystem/ruby-client/releases)
 [![License: MIT](https://badgen.now.sh/badge/license/MIT/green)](https://opensource.org/licenses/MIT)
