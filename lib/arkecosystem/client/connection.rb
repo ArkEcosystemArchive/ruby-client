@@ -1,11 +1,11 @@
 require 'arkecosystem/client/http/client'
-require 'arkecosystem/client/api/two/blocks'
-require 'arkecosystem/client/api/two/delegates'
-require 'arkecosystem/client/api/two/node'
-require 'arkecosystem/client/api/two/peers'
-require 'arkecosystem/client/api/two/transactions'
-require 'arkecosystem/client/api/two/votes'
-require 'arkecosystem/client/api/two/wallets'
+require 'arkecosystem/client/api/blocks'
+require 'arkecosystem/client/api/delegates'
+require 'arkecosystem/client/api/node'
+require 'arkecosystem/client/api/peers'
+require 'arkecosystem/client/api/transactions'
+require 'arkecosystem/client/api/votes'
+require 'arkecosystem/client/api/wallets'
 
 module ArkEcosystem
   module Client
@@ -38,7 +38,7 @@ module ArkEcosystem
       def blocks
         case @version
         when 2
-          @blocks ||= ArkEcosystem::Client::API::Two::Blocks.new(@client)
+          @blocks ||= ArkEcosystem::Client::API::Blocks.new(@client)
         else
           raise NotImplementedError
         end
@@ -50,7 +50,7 @@ module ArkEcosystem
       def delegates
         case @version
         when 2
-          @delegates ||= ArkEcosystem::Client::API::Two::Delegates.new(@client)
+          @delegates ||= ArkEcosystem::Client::API::Delegates.new(@client)
         else
           raise NotImplementedError
         end
@@ -62,7 +62,7 @@ module ArkEcosystem
       def node
         case @version
         when 2
-          @node ||= ArkEcosystem::Client::API::Two::Node.new(@client)
+          @node ||= ArkEcosystem::Client::API::Node.new(@client)
         else
           raise NotImplementedError
         end
@@ -74,7 +74,7 @@ module ArkEcosystem
       def peers
         case @version
         when 2
-          @peers ||= ArkEcosystem::Client::API::Two::Peers.new(@client)
+          @peers ||= ArkEcosystem::Client::API::Peers.new(@client)
         else
           raise NotImplementedError
         end
@@ -86,7 +86,7 @@ module ArkEcosystem
       def transactions
         case @version
         when 2
-          @transactions ||= ArkEcosystem::Client::API::Two::Transactions.new(@client) # rubocop:disable Metrics/LineLength
+          @transactions ||= ArkEcosystem::Client::API::Transactions.new(@client) # rubocop:disable Metrics/LineLength
         else
           raise NotImplementedError
         end
@@ -98,7 +98,7 @@ module ArkEcosystem
       def votes
         case @version
         when 2
-          @votes ||= ArkEcosystem::Client::API::Two::Votes.new(@client)
+          @votes ||= ArkEcosystem::Client::API::Votes.new(@client)
         else
           raise NotImplementedError
         end
@@ -110,7 +110,7 @@ module ArkEcosystem
       def wallets
         case @version
         when 2
-          @wallets ||= ArkEcosystem::Client::API::Two::Wallets.new(@client)
+          @wallets ||= ArkEcosystem::Client::API::Wallets.new(@client)
         else
           raise NotImplementedError
         end
