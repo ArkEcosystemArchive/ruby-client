@@ -1,4 +1,4 @@
-describe ArkEcosystem::Client::API::Two::Transactions do
+describe ArkEcosystem::Client::API::Transactions do
   before(:each) do
     get_v2_connection
   end

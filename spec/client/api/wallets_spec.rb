@@ -1,4 +1,4 @@
-describe ArkEcosystem::Client::API::Two::Wallets do
+describe ArkEcosystem::Client::API::Wallets do
   before(:each) do
     get_v2_connection
   end
