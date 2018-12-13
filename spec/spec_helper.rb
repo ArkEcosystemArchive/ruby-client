@@ -24,7 +24,7 @@ RSpec.configure do |config|
   end
 end
 
-def get_v2_connection
+def get_connection
   @host = 'http://localhost:1234/api'
   @response_body = '{"success": true}'
 
@@ -62,8 +62,7 @@ def get_v2_connection
   end
 
   @connection = ArkEcosystem::Client::Connection.new(
-    host: @host,
-    version: 2
+    host: @host
   )
 
   @connection.client.http_client = Faraday.new @host.to_s do |builder|

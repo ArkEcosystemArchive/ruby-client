@@ -20,10 +20,8 @@ module ArkEcosystem
       # @return [ArkEcosystem::Client::Connection]
       def initialize(config, client = nil)
         @host = config[:host]
-        @version = config[:version]
 
         raise ArgumentError, 'No API host is provided.' if @host.nil?
-        raise ArgumentError, 'No API version is provided.' if @version.nil?
 
         if client.nil? # rubocop:disable Style/ConditionalAssignment
           @client = ArkEcosystem::Client::HTTP::Client.new(config)
@@ -36,84 +34,49 @@ module ArkEcosystem
       #
       # @return [Object]
       def blocks
-        case @version
-        when 2
-          @blocks ||= ArkEcosystem::Client::API::Blocks.new(@client)
-        else
-          raise NotImplementedError
-        end
+        @blocks ||= ArkEcosystem::Client::API::Blocks.new(@client)
       end
 
       # Return the Delegates API resource.
       #
       # @return [Object]
       def delegates
-        case @version
-        when 2
-          @delegates ||= ArkEcosystem::Client::API::Delegates.new(@client)
-        else
-          raise NotImplementedError
-        end
+        @delegates ||= ArkEcosystem::Client::API::Delegates.new(@client)
       end
 
       # Return the Node API resource.
       #
       # @return [Object]
       def node
-        case @version
-        when 2
-          @node ||= ArkEcosystem::Client::API::Node.new(@client)
-        else
-          raise NotImplementedError
-        end
+        @node ||= ArkEcosystem::Client::API::Node.new(@client)
       end
 
       # Return the Peers API resource.
       #
       # @return [Object]
       def peers
-        case @version
-        when 2
-          @peers ||= ArkEcosystem::Client::API::Peers.new(@client)
-        else
-          raise NotImplementedError
-        end
+        @peers ||= ArkEcosystem::Client::API::Peers.new(@client)
       end
 
       # Return the Transactions API resource.
       #
       # @return [Object]
       def transactions
-        case @version
-        when 2
-          @transactions ||= ArkEcosystem::Client::API::Transactions.new(@client) # rubocop:disable Metrics/LineLength
-        else
-          raise NotImplementedError
-        end
+        @transactions ||= ArkEcosystem::Client::API::Transactions.new(@client) # rubocop:disable Metrics/LineLength
       end
 
       # Return the Votes API resource.
       #
       # @return [Object]
       def votes
-        case @version
-        when 2
-          @votes ||= ArkEcosystem::Client::API::Votes.new(@client)
-        else
-          raise NotImplementedError
-        end
+        @votes ||= ArkEcosystem::Client::API::Votes.new(@client)
       end
 
       # Return the Wallets API resource.
       #
       # @return [Object]
       def wallets
-        case @version
-        when 2
-          @wallets ||= ArkEcosystem::Client::API::Wallets.new(@client)
-        else
-          raise NotImplementedError
-        end
+        @wallets ||= ArkEcosystem::Client::API::Wallets.new(@client)
       end
     end
   end

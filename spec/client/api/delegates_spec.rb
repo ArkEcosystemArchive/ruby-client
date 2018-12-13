@@ -1,6 +1,6 @@
 describe ArkEcosystem::Client::API::Delegates do
   before(:each) do
-    get_v2_connection
+    get_connection
   end
 
   describe '.all' do
