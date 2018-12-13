@@ -15,7 +15,6 @@ module ArkEcosystem
         # @return [ArkEcosystem::Client::API::Two::Wallets]
         def initialize(config)
           @host = config[:host]
-          @version = config[:version]
           @http_client = nil
         end
 
@@ -81,10 +80,7 @@ module ArkEcosystem
           if @http_client.nil?
             Faraday.new @host.to_s do |faraday|
               faraday.headers['Content-Type'] = 'application/json'
-
-              unless @version.nil?
-                faraday.headers['API-Version'] = @version.to_s
-              end
+              faraday.headers['API-Version'] = 2
 
               faraday.request :json
 

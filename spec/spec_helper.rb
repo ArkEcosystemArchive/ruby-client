@@ -24,60 +24,7 @@ RSpec.configure do |config|
   end
 end
 
-def get_v1_connection
-  @host = 'http://localhost:1234/api'
-  @response_body = '{"success": true}'
-
-  stubs = Faraday::Adapter::Test::Stubs.new do |stub|
-    stub.get("#{@host}/accounts") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/accounts/delegates") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/accounts/delegates/fee") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/accounts/getBalance") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/accounts/getPublickey") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/get") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getEpoch") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getFee") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getFees") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getHeight") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getMilestone") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getNethash") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getReward") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getStatus") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/blocks/getSupply") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates/count") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates/fee") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates/forging/getForgedByAccount") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates/forging/status") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates/get") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates/getNextForgers") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates/search") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/delegates/voters") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/loader/autoconfigure") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/loader/status") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/loader/status/sync") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/peers") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/peers/get") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/peers/version") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/signatures/fee") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/transactions") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/transactions/get") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/transactions/unconfirmed") { |_env| [200, {}, @response_body] }
-    stub.get("#{@host}/transactions/unconfirmed/get") { |_env| [200, {}, @response_body] }
-  end
-
-  @connection = ArkEcosystem::Client::Connection.new(
-    host: @host,
-    version: 1
-  )
-
-  @connection.client.http_client = Faraday.new @host.to_s do |builder|
-    builder.adapter :test, stubs
-  end
-end
-
-def get_v2_connection
+def get_connection
   @host = 'http://localhost:1234/api'
   @response_body = '{"success": true}'
 
@@ -115,8 +62,7 @@ def get_v2_connection
   end
 
   @connection = ArkEcosystem::Client::Connection.new(
-    host: @host,
-    version: 2
+    host: @host
   )
 
   @connection.client.http_client = Faraday.new @host.to_s do |builder|

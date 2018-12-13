@@ -1,6 +1,6 @@
-describe ArkEcosystem::Client::API::Two::Node do
+describe ArkEcosystem::Client::API::Node do
   before(:each) do
-    get_v2_connection
+    get_connection
   end
 
   describe '.status' do

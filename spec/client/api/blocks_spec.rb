@@ -1,10 +1,10 @@
-describe ArkEcosystem::Client::API::Two::Blocks do
+describe ArkEcosystem::Client::API::Blocks do
   before(:each) do
-    get_v2_connection
+    get_connection
   end
 
   before(:each) do
-    get_v2_connection
+    get_connection
   end
 
   describe '.all' do
