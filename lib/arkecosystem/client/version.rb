@@ -1,10 +1,10 @@
 module ArkEcosystem
   module Client
     # Current major release.
-    MAJOR = 0
+    MAJOR = 1
 
     # Current minor release.
-    MINOR = 1
+    MINOR = 0
 
     # Current patch level.
     PATCH = 0
