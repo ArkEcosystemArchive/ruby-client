@@ -25,6 +25,13 @@ module ArkEcosystem
         def configuration
           @client.get('node/configuration')
         end
+
+        # Get the loader fee statistics.
+        #
+        # @return [Faraday::Response]
+        def fees(days = nil)
+          @client.get('node/fees', days ? { "days" => days } : {})
+        end
       end
     end
   end
