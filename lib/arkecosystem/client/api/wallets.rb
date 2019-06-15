@@ -58,7 +58,7 @@ module ArkEcosystem
         # @param parameters [Hash]
         #
         # @return [Faraday::Response]
-        def received_transaction(id, parameters = {})
+        def received_transactions(id, parameters = {})
           @client.get("wallets/#{id}/transactions/received", parameters)
         end
 
