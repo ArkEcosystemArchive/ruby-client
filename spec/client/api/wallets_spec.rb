@@ -45,7 +45,7 @@ describe ArkEcosystem::Client::API::Wallets do
 
   describe '.received_transactions' do
     it 'should be ok' do
-      response = @connection.wallets.received_transaction('dummy')
+      response = @connection.wallets.received_transactions('dummy')
       expect(response.url).to eq("#{@host}/wallets/dummy/transactions/received")
       expect(response.body['success']).to be_truthy
     end
