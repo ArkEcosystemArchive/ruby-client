@@ -80,7 +80,6 @@ module ArkEcosystem
           if @http_client.nil?
             Faraday.new @host.to_s do |faraday|
               faraday.headers['Content-Type'] = 'application/json'
-              faraday.headers['API-Version'] = 2
 
               faraday.request :json
 
