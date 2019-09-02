@@ -26,6 +26,13 @@ module ArkEcosystem
           @client.get('node/configuration')
         end
 
+        # Get the loader crypto configuration.
+        #
+        # @return [Faraday::Response]
+        def crypto
+          @client.get('node/configuration/crypto')
+        end
+
         # Get the loader fee statistics.
         #
         # @return [Faraday::Response]
