@@ -37,6 +37,7 @@ def get_connection
     stub.get("#{@host}/delegates/dummy/blocks") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/delegates/dummy/voters") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/node/configuration") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/node/configuration/crypto") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/node/fees") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/node/status") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/node/syncing") { |_env| [200, {}, @response_body] }

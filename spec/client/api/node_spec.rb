@@ -27,6 +27,14 @@ describe ArkEcosystem::Client::API::Node do
     end
   end
 
+  describe '.crypto' do
+    it 'should be ok' do
+      response = @connection.node.crypto
+      expect(response.url).to eq("#{@host}/node/configuration/crypto")
+      expect(response.body['success']).to be_truthy
+    end
+  end
+
   describe '.fees' do
     it 'should be ok' do
       response = @connection.node.fees
