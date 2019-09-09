@@ -65,6 +65,13 @@ module ArkEcosystem
         def types
           @client.get('transactions/types')
         end
+
+        # Get a list of static transaction fees.
+        #
+        # @return [Faraday::Response]
+        def fees
+          @client.get('transactions/fees')
+        end
       end
     end
   end
