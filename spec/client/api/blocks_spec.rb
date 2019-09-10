@@ -3,10 +3,6 @@ describe ArkEcosystem::Client::API::Blocks do
     get_connection
   end
 
-  before(:each) do
-    get_connection
-  end
-
   describe '.all' do
     it 'should be ok' do
       response = @connection.blocks.all

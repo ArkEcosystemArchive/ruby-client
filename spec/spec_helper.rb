@@ -43,6 +43,7 @@ def get_connection
     stub.get("#{@host}/node/syncing") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/peers") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/peers/dummy") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/rounds/12345/delegates") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/transactions") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/transactions/dummy") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/transactions/types") { |_env| [200, {}, @response_body] }
