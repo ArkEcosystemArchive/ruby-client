@@ -58,4 +58,12 @@ describe ArkEcosystem::Client::API::Transactions do
       expect(response.body['success']).to be_truthy
     end
   end
+
+  describe '.fees' do
+    it 'should be ok' do
+      response = @connection.transactions.fees
+      expect(response.url).to eq("#{@host}/transactions/fees")
+      expect(response.body['success']).to be_truthy
+    end
+  end
 end
