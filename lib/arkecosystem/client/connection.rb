@@ -3,6 +3,7 @@ require 'arkecosystem/client/api/blocks'
 require 'arkecosystem/client/api/delegates'
 require 'arkecosystem/client/api/node'
 require 'arkecosystem/client/api/peers'
+require 'arkecosystem/client/api/rounds'
 require 'arkecosystem/client/api/transactions'
 require 'arkecosystem/client/api/votes'
 require 'arkecosystem/client/api/wallets'
@@ -56,6 +57,13 @@ module ArkEcosystem
       # @return [Object]
       def peers
         @peers ||= ArkEcosystem::Client::API::Peers.new(@client)
+      end
+
+      # Return the Rounds API resource.
+      #
+      # @return [Object]
+      def rounds
+        @rounds ||= ArkEcosystem::Client::API::Rounds.new(@client)
       end
 
       # Return the Transactions API resource.
