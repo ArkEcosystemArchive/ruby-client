@@ -21,4 +21,7 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
-          bundle exec rspec
+          mkdir /tmp/test-results
+          bundle exec rspec --format progress --out /tmp/test-results/rspec.xml
+      - name: Codecov
+        run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
