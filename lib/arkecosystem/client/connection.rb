@@ -1,6 +1,9 @@
 require 'arkecosystem/client/http/client'
 require 'arkecosystem/client/api/blocks'
+require 'arkecosystem/client/api/bridgechains'
+require 'arkecosystem/client/api/businesses'
 require 'arkecosystem/client/api/delegates'
+require 'arkecosystem/client/api/locks'
 require 'arkecosystem/client/api/node'
 require 'arkecosystem/client/api/peers'
 require 'arkecosystem/client/api/rounds'
@@ -38,11 +41,32 @@ module ArkEcosystem
         @blocks ||= ArkEcosystem::Client::API::Blocks.new(@client)
       end
 
+      # Return the Bridgechains API resource.
+      #
+      # @return [Object]
+      def bridgechains
+        @bridgechains ||= ArkEcosystem::Client::API::Bridgechains.new(@client)
+      end
+
+      # Return the Businesses API resource.
+      #
+      # @return [Object]
+      def businesses
+        @businesses ||= ArkEcosystem::Client::API::Businesses.new(@client)
+      end
+
       # Return the Delegates API resource.
       #
       # @return [Object]
       def delegates
         @delegates ||= ArkEcosystem::Client::API::Delegates.new(@client)
+      end
+
+      # Return the Locks API resource.
+      #
+      # @return [Object]
+      def locks
+        @locks ||= ArkEcosystem::Client::API::Locks.new(@client)
       end
 
       # Return the Node API resource.
