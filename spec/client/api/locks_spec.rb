@@ -29,7 +29,7 @@ describe ArkEcosystem::Client::API::Locks do
 
   describe '.unlocked' do
     it 'should be ok' do
-      response = @connection.locks.search(id: 'dummy')
+      response = @connection.locks.unlocked(id: 'dummy')
       expect(response.url).to eq("#{@host}/locks/unlocked")
       expect(response.body['success']).to be_truthy
     end

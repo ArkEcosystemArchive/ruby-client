@@ -29,7 +29,7 @@ module ArkEcosystem
         # @param parameters [Hash]
         #
         # @return [Faraday::Response]
-        def transactions(id, parameters = {})
+        def bridgechains(id, parameters = {})
           @client.get("businesses/#{id}/bridgechains", parameters)
         end
 
