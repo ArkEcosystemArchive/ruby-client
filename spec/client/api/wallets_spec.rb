@@ -27,6 +27,14 @@ describe ArkEcosystem::Client::API::Wallets do
     end
   end
 
+  describe '.locks' do
+    it 'should be ok' do
+      response = @connection.wallets.locks('dummy')
+      expect(response.url).to eq("#{@host}/wallets/dummy/locks")
+      expect(response.body['success']).to be_truthy
+    end
+  end
+
   describe '.transactions' do
     it 'should be ok' do
       response = @connection.wallets.transactions('dummy')
