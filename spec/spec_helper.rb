@@ -32,10 +32,17 @@ def get_connection
     stub.get("#{@host}/blocks") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/blocks/dummy") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/blocks/dummy/transactions") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/bridgechains") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/bridgechains/dummy") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/businesses") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/businesses/dummy") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/businesses/dummy/bridgechains") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/delegates") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/delegates/dummy") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/delegates/dummy/blocks") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/delegates/dummy/voters") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/locks") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/locks/dummy") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/node/configuration") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/node/configuration/crypto") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/node/fees") { |_env| [200, {}, @response_body] }
@@ -54,12 +61,17 @@ def get_connection
     stub.get("#{@host}/votes/dummy") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/wallets") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/wallets/dummy") { |_env| [200, {}, @response_body] }
+    stub.get("#{@host}/wallets/dummy/locks") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/wallets/dummy/transactions") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/wallets/dummy/transactions/received") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/wallets/dummy/transactions/sent") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/wallets/dummy/votes") { |_env| [200, {}, @response_body] }
     stub.get("#{@host}/wallets/top") { |_env| [200, {}, @response_body] }
     stub.post("#{@host}/blocks/search") { |_env| [200, {}, @response_body] }
+    stub.post("#{@host}/bridgechains/search") { |_env| [200, {}, @response_body] }
+    stub.post("#{@host}/businesses/search") { |_env| [200, {}, @response_body] }
+    stub.post("#{@host}/locks/search") { |_env| [200, {}, @response_body] }
+    stub.post("#{@host}/locks/unlocked") { |_env| [200, {}, @response_body] }
     stub.post("#{@host}/transactions") { |_env| [200, {}, @response_body] }
     stub.post("#{@host}/transactions/search") { |_env| [200, {}, @response_body] }
     stub.post("#{@host}/wallets/search") { |_env| [200, {}, @response_body] }

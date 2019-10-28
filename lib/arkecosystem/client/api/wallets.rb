@@ -32,6 +32,16 @@ module ArkEcosystem
           @client.get("wallets/#{id}")
         end
 
+        # Get the locks for the given wallet.
+        #
+        # @param id [String]
+        # @param parameters [Hash]
+        #
+        # @return [Faraday::Response]
+        def locks(id, parameters = {})
+          @client.get("wallets/#{id}/locks", parameters)
+        end
+
         # Get the transactions for the given wallet.
         #
         # @param id [String]
